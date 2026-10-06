@@ -394,7 +394,7 @@ def foot():
    </div>
   </div>
   <div class="legal"><span>© <span id="year">{date.today().year}</span> {NAME}</span>
-   <a href="#main" class="up">Volver arriba ↑</a></div>
+   <span>Página web creada por <a href="https://zetaweb.es/" target="_blank" rel="noopener">ZetaWeb</a></span></div>
  </div>
 </footer>
 <a class="wa-float" href="{wa()}" target="_blank" rel="noopener" aria-label="Pedir grúa por WhatsApp" data-track="click_whatsapp">{ICON["wa"]}</a>
@@ -469,7 +469,6 @@ def index():
    <h1>Grúa 24 horas en <span class="hl">Barcelona</span></h1>
    <p class="lead">Avería, accidente, batería o pinchazo. Salimos al momento, de día y de noche.</p>
    {ctas()}
-   <ul class="ticks"><li>Llegada rápida</li><li>Precio antes de salir</li><li>Coches y motos</li></ul>
   </div>
   <div class="hero-logo">
    <picture><source srcset="/img/logo-oscuro.webp" type="image/webp"><img src="/img/logo-oscuro.png" alt="Asistencia 24H Barcelona - servicio de grúa" width="520" height="261" fetchpriority="high"></picture>
@@ -569,7 +568,7 @@ def zone(z):
   <h1>Grúa 24 horas en <span class="hl">{n}</span></h1>
   <p class="lead">{z["intro"]}</p>
   {ctas(lugar=n)}
-  <ul class="ticks"><li>24h / 365 días</li><li>Precio antes de salir</li></ul>
+  <ul class="ticks"><li>24h / 365 días</li></ul>
  </div>
 </section>
 
@@ -615,7 +614,7 @@ def service_page(slug):
   <h1>{sp["h1"]}</h1>
   <p class="lead">{sp["intro"]}</p>
   {ctas(motivo=name.lower())}
-  <ul class="ticks"><li>24h / 365 días</li><li>Precio antes de salir</li></ul>
+  <ul class="ticks"><li>24h / 365 días</li></ul>
  </div>
 </section>
 
