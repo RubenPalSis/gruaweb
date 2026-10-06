@@ -401,9 +401,6 @@ def foot(wa_url=None):
    <div class="fbrand">
     <picture><source srcset="/img/logo-oscuro.webp" type="image/webp"><img src="/img/logo-oscuro.png" alt="{NAME}" width="240" height="120" loading="lazy"></picture>
     <p>Grúa y asistencia en carretera 24h en Barcelona y área metropolitana.</p>
-    <div class="fbtns">
-     <a class="btn btn-y" href="tel:{PHONE_INTL}" data-track="click_llamar">{ICON["tel"]} Llamar</a>
-    </div>
    </div>
    <nav aria-label="Servicios"><h3>Servicios</h3><ul>{"".join(f'<li><a href="/{s[3]}/">{s[1]}</a></li>' for s in SERVICES if s[3])}</ul></nav>
    <nav aria-label="Zonas"><h3>Zonas</h3><ul class="cols">{"".join(f'<li><a href="/{z["slug"]}/">{z["name"].replace("de Llobregat", "").replace("del Vallès", "").strip()}</a></li>' for z in ZONES)}</ul></nav>
