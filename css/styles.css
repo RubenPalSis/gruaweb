@@ -137,3 +137,4 @@ footer a{color:var(--g);text-decoration:none;transition:color .15s}footer a:hove
 @media(max-width:760px){.faq{grid-template-columns:1fr}}
 footer{background:#0f0f10;border-top:1px solid #1d1e21}
 @media(max-width:600px){.feat{display:flex;flex-direction:column;text-align:center;gap:4px;padding:16px 10px}.feat svg{margin-bottom:6px}.feat span{font-size:.8rem}}
+footer .btn-y,footer .btn-y:hover{color:var(--k)}footer .btn-wa,footer .btn-wa:hover{color:#fff}
