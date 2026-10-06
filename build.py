@@ -58,10 +58,10 @@ SERVICES = [  # (icono, nombre, descripción corta, página propia o None)
     ("acc", "Rescate tras accidente", "Retirada rápida en calles, rondas y autopistas.", "grua-accidente-barcelona"),
     ("bat", "Arranque de batería", "¿No arranca? Lo arrancamos donde estés.", "arranque-bateria-barcelona"),
     ("rueda", "Pinchazo y cambio de rueda", "Cambiamos la rueda en el momento.", "cambio-rueda-pinchazo-barcelona"),
-    ("fuel", "Falta de combustible", "Te llevamos combustible o a la gasolinera.", None),
+    ("fuel", "Falta de combustible", "Te llevamos combustible o a la gasolinera.", "falta-combustible-barcelona"),
     ("moto", "Traslado de motos", "Motos y scooters con anclajes específicos.", "grua-motos-barcelona"),
     ("km", "Traslados de larga distancia", "A toda Cataluña y España, precio cerrado.", "transporte-vehiculos-barcelona"),
-    ("llave", "Traslados a ITV y taller", "Coches que no pueden circular.", None),
+    ("llave", "Traslados a ITV y taller", "Coches que no pueden circular.", "traslado-itv-taller-barcelona"),
     ("baja", "Retirada para desguace", "A desguace autorizado para la baja.", "retirada-coches-desguace-barcelona"),
 ]
 
@@ -168,6 +168,30 @@ FAQ = [
 
 
 SERVICE_PAGES = {
+    "falta-combustible-barcelona": dict(
+        h1="Sin gasolina en Barcelona",
+        title="Sin Gasolina en Barcelona: Asistencia 24h",
+        desc="¿Te has quedado sin gasolina o diésel en Barcelona? Te llevamos combustible o el coche a la gasolinera, 24 horas. Llama al 671 44 86 39.",
+        intro="¿Te has quedado sin combustible? Te lo llevamos o remolcamos el coche a la gasolinera más cercana.",
+        sections=[
+            ("Combustible donde estés", "Gasolina o diésel para llegar a la gasolinera."),
+            ("Rondas y autopistas", "Te sacamos de la vía rápida con seguridad."),
+            ("¿Combustible equivocado?", "Si has repostado mal, no arranques: lo llevamos al taller."),
+        ],
+        faq=[("¿Qué hago si me quedo sin gasolina en la ronda?", "Sal del carril si puedes, ponte el chaleco, activa la baliza V-16 y llámanos."),
+             ("¿Y si he echado gasolina en un diésel?", "No arranques el motor. Lo llevamos en grúa al taller para vaciar el depósito.")]),
+    "traslado-itv-taller-barcelona": dict(
+        h1="Traslado a ITV y taller en Barcelona",
+        title="Traslado de Coches a ITV y Taller en Barcelona",
+        desc="Llevamos en grúa tu coche sin ITV, sin seguro o que no puede circular al taller o a la estación de ITV en Barcelona. Llama al 671 44 86 39.",
+        intro="Movemos en grúa los coches que no pueden circular: sin ITV, sin batería o con la ITV desfavorable.",
+        sections=[
+            ("A la estación de ITV", "Llevamos y traemos tu coche a la cita."),
+            ("Al taller que elijas", "Tu taller de confianza o el concesionario."),
+            ("Coches parados mucho tiempo", "Sin batería, sin seguro o sin ITV en vigor."),
+        ],
+        faq=[("¿Puedo llevar a la ITV un coche con la ITV caducada?", "Conducirlo puede suponer una multa. En grúa lo trasladas sin riesgo."),
+             ("¿Podéis esperar y traer el coche de vuelta?", "Sí, organizamos ida y vuelta. Pídenos precio.")]),
     "remolque-coches-barcelona": dict(
         h1="Remolque de coches en Barcelona",
         title="Remolque de Coches Barcelona 24h",
@@ -357,7 +381,8 @@ def head(title, desc, path, extra_ld=(), robots="index, follow, max-image-previe
 """
 
 
-def foot():
+def foot(wa_url=None):
+    wa_url = wa_url or wa()
     return f"""</main>
 <section class="cta-band" id="contacto">
  <div class="wrap">
@@ -366,7 +391,6 @@ def foot():
   <a class="phone-big" href="tel:{PHONE_INTL}" data-track="click_llamar">{PHONE_FULL}</a>
   <div class="ctas">
    <a class="btn btn-y" href="tel:{PHONE_INTL}" data-track="click_llamar">{ICON["tel"]} Llamar ahora</a>
-   <a class="btn btn-wa" href="{wa()}" target="_blank" rel="noopener" data-track="click_whatsapp">{ICON["wa"]} WhatsApp</a>
   </div>
  </div>
 </section>
@@ -379,7 +403,6 @@ def foot():
     <p>Grúa y asistencia en carretera 24h en Barcelona y área metropolitana.</p>
     <div class="fbtns">
      <a class="btn btn-y" href="tel:{PHONE_INTL}" data-track="click_llamar">{ICON["tel"]} Llamar</a>
-     <a class="btn btn-wa" href="{wa()}" target="_blank" rel="noopener" data-track="click_whatsapp">{ICON["wa"]} WhatsApp</a>
     </div>
    </div>
    <nav aria-label="Servicios"><h3>Servicios</h3><ul>{"".join(f'<li><a href="/{s[3]}/">{s[1]}</a></li>' for s in SERVICES if s[3])}</ul></nav>
@@ -397,21 +420,16 @@ def foot():
    <span>Página web creada por <a href="https://zetaweb.es/" target="_blank" rel="noopener">ZetaWeb</a></span></div>
  </div>
 </footer>
-<a class="wa-float" href="{wa()}" target="_blank" rel="noopener" aria-label="Pedir grúa por WhatsApp" data-track="click_whatsapp">{ICON["wa"]}</a>
-<nav class="mbar" aria-label="Contacto rápido">
- <a class="c" href="tel:{PHONE_INTL}" data-track="click_llamar">{ICON["tel"]} Llamar</a>
- <a class="w" href="{wa()}" target="_blank" rel="noopener" data-track="click_whatsapp">{ICON["wa"]} WhatsApp</a>
-</nav>
+<a class="wa-float" href="{wa_url}" target="_blank" rel="noopener" aria-label="Pedir grúa por WhatsApp" data-track="click_whatsapp"><span class="wa-ic">{ICON["wa"]}</span><span class="wa-txt"><small>¿Necesitas una grúa?</small>Escríbenos</span></a>
 <script src="/js/main.js" defer></script>
 </body>
 </html>
 """
 
 
-def ctas(motivo="", lugar=""):
+def ctas():
     return f"""<div class="ctas">
  <a class="btn btn-y" href="tel:{PHONE_INTL}" data-track="click_llamar">{ICON["tel"]} Llamar: {PHONE_TXT}</a>
- <a class="btn btn-wa" href="{wa(motivo, lugar)}" target="_blank" rel="noopener" data-track="click_whatsapp">{ICON["wa"]} Pedir grúa por WhatsApp</a>
 </div>"""
 
 
@@ -439,11 +457,11 @@ def crumbs_ld(name, path):
         {"@type": "ListItem", "position": 1, "name": "Inicio", "item": f"{SITE}/"},
         {"@type": "ListItem", "position": 2, "name": name, "item": f"{SITE}{path}"}]}
 
-STEPS = """<ol class="steps">
- <li><h3>Llama o escribe</h3></li>
- <li><h3>Envía tu ubicación</h3></li>
- <li><h3>Te damos precio</h3></li>
- <li><h3>Llegamos</h3></li>
+STEPS = f"""<ol class="steps">
+ <li>{ICON["tel"]}<h3>Llama o escribe</h3><p>A cualquier hora</p></li>
+ <li>{SICON["pin"]}<h3>Envía tu ubicación</h3><p>Por WhatsApp, en un toque</p></li>
+ <li>{SICON["euro"]}<h3>Te damos precio</h3><p>Cerrado, antes de salir</p></li>
+ <li>{SICON["grua"]}<h3>Llegamos</h3><p>Y lo solucionamos</p></li>
 </ol>"""
 
 
@@ -567,7 +585,7 @@ def zone(z):
   <span class="badge"><span class="dot"></span> Disponibles ahora en {n}</span>
   <h1>Grúa 24 horas en <span class="hl">{n}</span></h1>
   <p class="lead">{z["intro"]}</p>
-  {ctas(lugar=n)}
+  {ctas()}
   <ul class="ticks"><li>24h / 365 días</li></ul>
  </div>
 </section>
@@ -593,7 +611,7 @@ def zone(z):
  </div>
 </section>
 """
-    return head(title, desc, path, [crumbs_ld(f"Grúa en {n}", path), svc, faq_ld(faq)]) + body + foot()
+    return head(title, desc, path, [crumbs_ld(f"Grúa en {n}", path), svc, faq_ld(faq)]) + body + foot(wa(lugar=n))
 
 
 def service_page(slug):
@@ -604,39 +622,43 @@ def service_page(slug):
            "description": sp["desc"], "provider": {"@id": f"{SITE}/#negocio"},
            "areaServed": [{"@type": "City", "name": "Barcelona"}] + [{"@type": "City", "name": z["name"]} for z in ZONES],
            "hoursAvailable": "Mo-Su 00:00-23:59"}
-    sections = "".join(f'<article class="card"><h2 class="h3">{h}</h2><p>{t}</p></article>' for h, t in sp["sections"])
-    other = "".join(f'<li><a href="/{o[3]}/">{o[1]}</a></li>' for o in SERVICES if o[3] and o[3] != slug)
+    sections = "".join(f'<article class="inc"><span class="tick">✓</span><div><h3>{h}</h3><p>{t}</p></div></article>' for h, t in sp["sections"])
     body = f"""
 <section class="hero">
- <div class="wrap">
-  <nav class="breadcrumb" aria-label="Migas de pan"><a href="/">Inicio</a> › {name}</nav>
-  <span class="badge"><span class="dot"></span> Servicio 24h / 365 días</span>
-  <h1>{sp["h1"]}</h1>
-  <p class="lead">{sp["intro"]}</p>
-  {ctas(motivo=name.lower())}
-  <ul class="ticks"><li>24h / 365 días</li></ul>
+ <div class="wrap shero">
+  <div>
+   <nav class="breadcrumb" aria-label="Migas de pan"><a href="/">Inicio</a> › {name}</nav>
+   <span class="badge"><span class="dot"></span> Servicio 24h / 365 días</span>
+   <h1>{sp["h1"]}</h1>
+   <p class="lead">{sp["intro"]}</p>
+   {ctas()}
+  </div>
+  <div class="sicon" aria-hidden="true">{SICON[icon]}</div>
  </div>
 </section>
 
 <section>
- <div class="wrap"><div class="cards">{sections}</div></div>
+ <div class="wrap">
+  <h2>Qué incluye</h2>
+  <div class="incs">{sections}</div>
+ </div>
 </section>
 
-<section>
+<section class="alt">
  <div class="wrap">
   <h2>Preguntas frecuentes</h2>
   {faq_html(sp["faq"])}
  </div>
 </section>
 
-<section class="alt">
+<section>
  <div class="wrap">
   <h2>Otros servicios</h2>
-  <ul class="zones">{other}</ul>
+  <div class="cards">{services_html(skip=slug)}</div>
  </div>
 </section>
 """
-    return head(f"{sp['title']} ☎ {PHONE_TXT}", sp["desc"], path, [crumbs_ld(name, path), svc, faq_ld(sp["faq"])]) + body + foot()
+    return head(f"{sp['title']} ☎ {PHONE_TXT}", sp["desc"], path, [crumbs_ld(name, path), svc, faq_ld(sp["faq"])]) + body + foot(wa(motivo=name.lower()))
 
 
 def page_404():
