@@ -524,7 +524,7 @@ def index():
    <h2>Grúa en Barcelona y alrededores</h2>
    <ul class="zones">{zones}</ul>
   </div>
-  <div class="map"><iframe title="Zona de servicio: Barcelona y área metropolitana" src="https://maps.google.com/maps?q=Barcelonahttps://www.google.com/maps?q=Barcelona&amp;z=10&amp;output=embedamp;t=https://www.google.com/maps?q=Barcelona&amp;z=10&amp;output=embedamp;z=10https://www.google.com/maps?q=Barcelona&amp;z=10&amp;output=embedamp;ie=UTF8https://www.google.com/maps?q=Barcelona&amp;z=10&amp;output=embedamp;iwloc=https://www.google.com/maps?q=Barcelona&amp;z=10&amp;output=embedamp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+  <div class="map"><iframe title="Zona de servicio: Barcelona y área metropolitana" src="https://www.openstreetmap.org/export/embed.html?bbox=1.90%2C41.25%2C2.35%2C41.55&amp;layer=mapnik&amp;marker=41.3874%2C2.1686" loading="lazy"></iframe></div>
  </div>
 </section>
 
