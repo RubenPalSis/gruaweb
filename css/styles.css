@@ -99,3 +99,5 @@ footer a{color:var(--g);text-decoration:none}footer a:hover{color:var(--y)}
 .more{display:inline-block;margin-top:10px;font-weight:700;color:var(--y)}
 .light .prose p,.light .prose li{color:#3d424a}.light h3{color:#14161a}
 .prose h2:not(:first-child),.prose h3{margin-top:1.4em}
+.h3{font-size:1.2rem}
+.steps li{padding:20px}.steps li h3{margin:0}

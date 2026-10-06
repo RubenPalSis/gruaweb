@@ -50,15 +50,15 @@ SICON = {
 }
 
 SERVICES = [  # (icono, nombre, descripción corta, página propia o None)
-    ("grua", "Remolque de coches averiados", "Llevamos tu vehículo al taller, concesionario o domicilio que elijas, con grúa de plataforma y sin dañar el coche.", "remolque-coches-barcelona"),
-    ("acc", "Rescate tras accidente", "Retirada rápida de vehículos siniestrados en calles, rondas y autopistas. Te ayudamos a despejar la vía con seguridad.", "grua-accidente-barcelona"),
-    ("bat", "Arranque de batería", "¿El coche no arranca? Arrancamos tu batería en el sitio o la sustituimos para que sigas tu camino.", "arranque-bateria-barcelona"),
-    ("rueda", "Pinchazo y cambio de rueda", "Cambiamos la rueda pinchada en el momento. Si no tienes repuesto, trasladamos el vehículo al taller más cercano.", "cambio-rueda-pinchazo-barcelona"),
-    ("fuel", "Falta de combustible", "Te quedaste sin gasolina o diésel: te llevamos combustible o el coche hasta la gasolinera.", None),
-    ("moto", "Traslado de motos", "Transporte de motos y scooters con anclajes específicos, también por avería o accidente.", "grua-motos-barcelona"),
-    ("km", "Traslados de larga distancia", "Transporte de vehículos dentro de Cataluña y a cualquier punto de España. Presupuesto cerrado.", "transporte-vehiculos-barcelona"),
-    ("llave", "Traslados a ITV y taller", "Movemos coches sin ITV, sin batería o que no pueden circular, con total seguridad y legalidad.", None),
-    ("baja", "Retirada para desguace", "Recogemos tu coche viejo o siniestrado y lo llevamos a un centro autorizado para darlo de baja.", "retirada-coches-desguace-barcelona"),
+    ("grua", "Remolque de coches averiados", "Al taller o a casa, en grúa de plataforma.", "remolque-coches-barcelona"),
+    ("acc", "Rescate tras accidente", "Retirada rápida en calles, rondas y autopistas.", "grua-accidente-barcelona"),
+    ("bat", "Arranque de batería", "¿No arranca? Lo arrancamos donde estés.", "arranque-bateria-barcelona"),
+    ("rueda", "Pinchazo y cambio de rueda", "Cambiamos la rueda en el momento.", "cambio-rueda-pinchazo-barcelona"),
+    ("fuel", "Falta de combustible", "Te llevamos combustible o a la gasolinera.", None),
+    ("moto", "Traslado de motos", "Motos y scooters con anclajes específicos.", "grua-motos-barcelona"),
+    ("km", "Traslados de larga distancia", "A toda Cataluña y España, precio cerrado.", "transporte-vehiculos-barcelona"),
+    ("llave", "Traslados a ITV y taller", "Coches que no pueden circular.", None),
+    ("baja", "Retirada para desguace", "A desguace autorizado para la baja.", "retirada-coches-desguace-barcelona"),
 ]
 
 BCN_DISTRICTS = ["Ciutat Vella", "Eixample", "Sants-Montjuïc", "Les Corts", "Sarrià-Sant Gervasi", "Gràcia",
@@ -148,20 +148,18 @@ ZONES = [
 ]
 
 FAQ = [
-    ("¿Cuánto tarda en llegar la grúa?",
-     "Depende de dónde estés y del tráfico, pero salimos de inmediato en cuanto recibimos tu llamada o tu ubicación por WhatsApp. En Barcelona ciudad y el área metropolitana solemos llegar en muy poco tiempo. Te damos una hora estimada de llegada al hablar contigo."),
+    ("¿Cuánto tarda la grúa?",
+     "Salimos en cuanto nos llamas o nos envías tu ubicación por WhatsApp. Te damos la hora estimada de llegada al momento."),
     ("¿Cuánto cuesta una grúa en Barcelona?",
-     "El precio depende de la distancia, el tipo de vehículo y la hora. Te damos un presupuesto claro y sin compromiso antes de salir, para que no haya sorpresas. Escríbenos por WhatsApp con tu ubicación y el destino y te respondemos al momento."),
-    ("¿Trabajáis de noche, fines de semana y festivos?",
-     "Sí. Somos un servicio de asistencia 24 horas, los 365 días del año, incluidos noches, fines de semana y festivos."),
-    ("¿Qué datos necesito para pedir una grúa?",
-     "Tu ubicación (puedes enviarla por WhatsApp), el modelo del vehículo, qué le pasa y a dónde quieres llevarlo. Con eso preparamos la asistencia más adecuada."),
-    ("¿Lleváis el coche a mi taller de confianza?",
-     "Sí, trasladamos tu vehículo al taller, concesionario, domicilio o lugar que tú nos digas, dentro y fuera de Barcelona."),
-    ("¿Podéis recoger coches en parkings subterráneos?",
-     "En muchos casos sí. Indícanos la altura del parking y el tipo de vehículo y te confirmamos la mejor manera de sacarlo."),
-    ("¿Hacéis traslados fuera de Cataluña?",
-     "Sí, realizamos transportes de vehículos a cualquier punto de España con presupuesto cerrado."),
+     "Depende de la distancia, el vehículo y la hora. Mándanos ubicación y destino por WhatsApp y te damos un precio cerrado y sin compromiso antes de salir."),
+    ("¿Trabajáis de noche y festivos?",
+     "Sí, 24 horas, los 365 días del año."),
+    ("¿Lleváis el coche a mi taller?",
+     "Sí, al taller, concesionario o domicilio que nos digas, dentro y fuera de Barcelona."),
+    ("¿Y si mi seguro tarda o no me cubre?",
+     "Hacemos el servicio de forma particular y te damos la factura para que la reclames a tu aseguradora."),
+    ("¿Qué hago si me quedo parado en una ronda o autopista?",
+     "Ponte el chaleco, activa la baliza V-16, sal detrás del guardarraíl y llámanos. Cubrimos rondas, Gran Via, Diagonal, C-31, C-32, C-58, A-2, AP-7 y B-23."),
 ]
 
 
@@ -170,11 +168,11 @@ SERVICE_PAGES = {
         h1="Remolque de coches en Barcelona",
         title="Remolque de Coches Barcelona 24h",
         desc="Remolque de coches averiados en Barcelona las 24 horas. Grúa de plataforma, traslado al taller o domicilio y presupuesto al momento.",
-        intro="¿Tu coche no arranca, hace un ruido raro o se ha parado en plena calle? Lo remolcamos con grúa de plataforma y lo llevamos al taller, concesionario o domicilio que elijas, en Barcelona y su área metropolitana.",
+        intro="¿Tu coche se ha parado? Lo llevamos en grúa al taller, concesionario o a tu casa.",
         sections=[
-            ("Grúa de plataforma: tu coche no sufre", "Cargamos el vehículo sobre la plataforma, sin arrastrarlo por el suelo. Así protegemos la caja de cambios, la transmisión y los bajos, algo especialmente importante en coches automáticos, eléctricos, híbridos y 4x4."),
-            ("Coches, furgonetas, eléctricos y 4x4", "Remolcamos turismos, furgonetas, vehículos eléctricos e híbridos, SUV y todoterrenos. Dinos el modelo al llamar y te confirmamos al momento cómo hacer el traslado."),
-            ("A tu taller de confianza o a donde necesites", "Llevamos el coche a tu taller habitual, al concesionario oficial de la marca o a tu casa si el taller está cerrado. Si no conoces ningún taller en la zona, te orientamos."),
+            ("Grúa de plataforma: tu coche no sufre", "Lo cargamos sin arrastrarlo: ideal para automáticos y eléctricos."),
+            ("Coches, furgonetas, eléctricos y 4x4", "Turismos, furgonetas, SUV, híbridos y eléctricos."),
+            ("A tu taller de confianza o a donde necesites", "Taller, concesionario o tu casa: tú eliges."),
         ],
         faq=[("¿Podéis remolcar un coche automático o eléctrico?", "Sí. Usamos grúa de plataforma, que carga el vehículo entero sin que las ruedas giren, que es la forma recomendada por los fabricantes para coches automáticos, eléctricos e híbridos."),
              ("¿Puedo ir en la grúa con mi coche?", "Normalmente sí, puedes acompañarnos en la cabina hasta el destino. Coméntalo al pedir el servicio.")]),
@@ -182,11 +180,11 @@ SERVICE_PAGES = {
         h1="Grúa por accidente en Barcelona",
         title="Grúa por Accidente en Barcelona 24h",
         desc="Grúa tras accidente en Barcelona 24h: retirada de vehículos siniestrados en calles, rondas y autopistas. Salida inmediata. Llama al 671 44 86 39.",
-        intro="Después de un accidente lo último que necesitas es esperar. Retiramos tu vehículo siniestrado de la calle, la ronda o la autopista y lo llevamos al taller o al depósito que indiques.",
+        intro="Retiramos tu vehículo de la calle, la ronda o la autopista y lo llevamos donde nos digas.",
         sections=[
-            ("Qué hacer tras un accidente", "Primero, ponte a salvo: chaleco reflectante y fuera de la calzada. Señaliza el vehículo, llama al 112 si hay heridos y rellena el parte amistoso con el otro conductor. Después llámanos o mándanos tu ubicación por WhatsApp y nos encargamos del vehículo."),
-            ("Rondas, autopistas y vías rápidas", "Trabajamos en la Ronda de Dalt, la Ronda Litoral, la Gran Via, la Diagonal, la C-31, la C-32, la A-2, la AP-7 y la B-23, entre otras. Conocemos los accesos y retiramos el vehículo de forma rápida y segura."),
-            ("Si tu seguro tarda", "Si la asistencia de tu seguro tarda demasiado o no cubre lo que necesitas, podemos hacer el servicio directamente y darte la factura para que la reclames."),
+            ("Qué hacer tras un accidente", "Ponte a salvo, llama al 112 si hay heridos y después a nosotros."),
+            ("Rondas, autopistas y vías rápidas", "Rondas, Gran Via, C-31, C-32, A-2, AP-7 y B-23."),
+            ("Si tu seguro tarda", "Hacemos el servicio y te damos factura para reclamarla."),
         ],
         faq=[("¿Trabajáis con seguros?", "Podemos hacer el servicio de forma particular y darte la factura detallada para que la presentes a tu aseguradora. Consúltanos tu caso concreto."),
              ("¿Retiráis coches que no ruedan?", "Sí. Los vehículos accidentados con ruedas o dirección dañadas se cargan con la plataforma y el cabrestante de la grúa.")]),
@@ -194,11 +192,11 @@ SERVICE_PAGES = {
         h1="Arranque de batería en Barcelona",
         title="Arranque de Batería Barcelona 24h a Domicilio",
         desc="¿Tu coche no arranca? Arranque de batería a domicilio en Barcelona 24h, en la calle o en tu parking. Llegamos rápido. Llama o WhatsApp 671 44 86 39.",
-        intro="Batería descargada por el frío, por dejarte las luces encendidas o por pasar días sin usar el coche. Vamos a donde estés, en la calle o en tu parking, y arrancamos el vehículo en el momento.",
+        intro="¿El coche no arranca? Vamos a donde estés, en la calle o en tu parking.",
         sections=[
-            ("Arranque en el sitio", "Arrancamos el motor con un equipo de arranque profesional, sin necesidad de otro coche ni de pinzas. En la mayoría de los casos sigues tu camino en pocos minutos."),
-            ("Cuando la batería está agotada", "Si la batería ya no carga, te lo decimos al momento. Podemos llevar el coche al taller o ayudarte a sustituirla para que no te vuelva a dejar tirado."),
-            ("Señales de batería débil", "El motor gira lento al arrancar, las luces del salpicadero parpadean o el coche tiene más de 4 o 5 años con la batería original. Si notas alguno de estos síntomas, revisa la batería antes de quedarte tirado."),
+            ("Arranque en el sitio", "Equipo profesional, sin necesidad de otro coche."),
+            ("Cuando la batería está agotada", "Si no carga, te llevamos al taller o te ayudamos a cambiarla."),
+            ("Señales de batería débil", "Arranque lento o luces que parpadean: revísala a tiempo."),
         ],
         faq=[("¿Venís a parkings subterráneos?", "Sí, el arranque de batería se puede hacer en casi cualquier parking, porque no hace falta meter la grúa."),
              ("¿Cuánto tarda el arranque?", "Una vez en el sitio, el arranque suele llevar solo unos minutos.")]),
@@ -206,10 +204,10 @@ SERVICE_PAGES = {
         h1="Pinchazo y cambio de rueda en Barcelona",
         title="Pinchazo y Cambio de Rueda Barcelona 24h",
         desc="¿Has pinchado? Cambio de rueda en Barcelona 24h, en la calle, la ronda o la autopista. Sin repuesto, te llevamos al taller. Llama al 671 44 86 39.",
-        intro="Un pinchazo en plena ronda o de noche puede ser peligroso. Vamos a donde estés: cambiamos la rueda en el sitio o, si no tienes repuesto, llevamos el coche al taller más cercano.",
+        intro="Cambiamos la rueda en el sitio o llevamos el coche al taller.",
         sections=[
-            ("Cambio de rueda en el momento", "Ponemos tu rueda de repuesto o de galleta de forma segura, con las herramientas adecuadas, incluso si las tuercas están muy apretadas o tienes tuerca antirrobo con su llave."),
-            ("Sin rueda de repuesto", "Muchos coches nuevos solo llevan kit antipinchazos. Si el kit no basta o la rueda está reventada, cargamos el coche en la grúa y lo llevamos a un taller de neumáticos."),
+            ("Cambio de rueda en el momento", "Ponemos tu rueda de repuesto de forma segura."),
+            ("Sin rueda de repuesto", "Si el kit antipinchazos no basta, te llevamos al taller."),
         ],
         faq=[("¿Qué hago si pincho en la autopista?", "Sal de la calzada si puedes, ponte el chaleco, coloca la señal V-16 y espera detrás del guardarraíl. Llámanos y no intentes cambiar la rueda en el carril."),
              ("¿Cambiáis ruedas de furgonetas?", "Sí, cambiamos ruedas de turismos, SUV y furgonetas.")]),
@@ -217,10 +215,10 @@ SERVICE_PAGES = {
         h1="Grúa para motos en Barcelona",
         title="Grúa para Motos en Barcelona 24h",
         desc="Grúa para motos y scooters en Barcelona 24h. Traslado seguro con anclajes específicos, por avería o accidente. Llama o WhatsApp 671 44 86 39.",
-        intro="Barcelona es una ciudad de motos y scooters, y sabemos cómo transportarlos sin un rasguño. Recogemos tu moto averiada o accidentada y la llevamos al taller o a tu casa.",
+        intro="Recogemos tu moto o scooter averiado o accidentado y lo llevamos al taller o a casa.",
         sections=[
-            ("Transporte seguro de motos", "Usamos calzos y cinchas específicas para motos, que sujetan la moto por los puntos adecuados sin dañar el carenado ni las suspensiones."),
-            ("Scooters, motos grandes y eléctricas", "Trasladamos scooters de 125 cc, motos de gran cilindrada, motos eléctricas y de trail. Si la moto está muy dañada tras una caída, también la recogemos."),
+            ("Transporte seguro de motos", "Calzos y cinchas específicos, sin dañar el carenado."),
+            ("Scooters, motos grandes y eléctricas", "Desde scooters de 125 cc hasta motos de gran cilindrada."),
         ],
         faq=[("¿Recogéis motos sin llaves?", "Depende del caso. Consúltanos: necesitamos comprobar que eres el titular o tienes autorización."),
              ("¿Podéis llevar mi moto a la ITV o a otra ciudad?", "Sí, hacemos traslados programados de motos a la ITV, al taller o a cualquier ciudad de España.")]),
@@ -228,10 +226,10 @@ SERVICE_PAGES = {
         h1="Transporte de vehículos desde Barcelona",
         title="Transporte de Vehículos Barcelona | Toda España",
         desc="Transporte de coches y motos desde Barcelona a toda España. Traslados programados, compraventa, mudanzas y talleres. Presupuesto cerrado: 671 44 86 39.",
-        intro="¿Has comprado un coche en otra ciudad, te mudas o necesitas llevar el vehículo a un taller lejos de Barcelona? Hacemos el transporte en grúa, puerta a puerta y con presupuesto cerrado.",
+        intro="Llevamos tu coche o moto puerta a puerta, con precio cerrado.",
         sections=[
-            ("Traslados programados", "Acordamos contigo fecha, hora de recogida y lugar de entrega. El vehículo viaja sobre la plataforma, sin sumar kilómetros ni desgaste."),
-            ("Dentro de Cataluña y a toda España", "Trasladamos vehículos a Girona, Tarragona, Lleida y al resto de Cataluña, así como a Madrid, Valencia, Zaragoza, Andorra y cualquier punto de España."),
+            ("Traslados programados", "Tú eliges día, hora y lugar de entrega."),
+            ("Dentro de Cataluña y a toda España", "Girona, Tarragona, Lleida, Madrid, Valencia y más."),
         ],
         faq=[("¿Cómo se calcula el precio de un traslado largo?", "Según los kilómetros, el tipo de vehículo y la fecha. Envíanos origen, destino y modelo por WhatsApp y te damos un precio cerrado."),
              ("¿Transportáis coches que no funcionan?", "Sí, el vehículo no necesita arrancar: se carga con el cabrestante de la grúa.")]),
@@ -239,10 +237,10 @@ SERVICE_PAGES = {
         h1="Retirada de coches para desguace en Barcelona",
         title="Retirada de Coches para Desguace en Barcelona",
         desc="Retiramos tu coche viejo, averiado o siniestrado en Barcelona y lo llevamos a un desguace autorizado para darlo de baja. Llama al 671 44 86 39.",
-        intro="¿Tienes un coche viejo ocupando una plaza de parking o que ya no merece la pena reparar? Lo recogemos y lo llevamos a un Centro Autorizado de Tratamiento (CAT) para que se tramite la baja definitiva en la DGT.",
+        intro="Recogemos tu coche viejo y lo llevamos a un desguace autorizado para darlo de baja.",
         sections=[
-            ("Baja oficial en la DGT", "El desguace autorizado te entrega el certificado de destrucción y tramita la baja, así dejas de pagar el impuesto de circulación y el seguro del vehículo."),
-            ("Qué necesitas", "La documentación del vehículo (permiso de circulación y ficha técnica) y el DNI del titular. Si te falta algún documento, consúltanos y te orientamos."),
+            ("Baja oficial en la DGT", "Te llevamos a un desguace autorizado que tramita la baja."),
+            ("Qué necesitas", "Permiso de circulación, ficha técnica y DNI del titular."),
         ],
         faq=[("¿Recogéis coches sin ITV o sin batería?", "Sí, el coche no necesita arrancar ni tener la ITV en vigor para que lo retiremos."),
              ("¿Recogéis en parkings comunitarios?", "Sí, en la mayoría de los casos. Indícanos la altura del parking y el acceso.")]),
@@ -340,7 +338,6 @@ def head(title, desc, path, extra_ld=(), robots="index, follow, max-image-previe
 </head>
 <body>
 <a class="skip" href="#main">Saltar al contenido</a>
-<div class="top">🚨 Grúa 24 horas en Barcelona · Llama ahora: <a href="tel:{PHONE_INTL}" data-track="click_llamar">{PHONE_TXT}</a></div>
 <header class="site">
  <div class="wrap nav">
   <a class="brand" href="/" aria-label="{NAME} - Inicio"><img src="/img/icon-192.png" alt="" width="46" height="46">
@@ -357,12 +354,11 @@ def head(title, desc, path, extra_ld=(), robots="index, follow, max-image-previe
 
 
 def foot():
-    zl = "".join(f'<li><a href="/{z["slug"]}/">Grúa en {z["name"]}</a></li>' for z in ZONES)
     return f"""</main>
 <section class="cta-band" id="contacto">
  <div class="wrap">
   <h2>¿Necesitas una grúa ahora?</h2>
-  <p>Llámanos o envíanos tu ubicación por WhatsApp. Respondemos 24 horas, 365 días.</p>
+  <p>Respondemos 24 horas, 365 días.</p>
   <a class="phone-big" href="tel:{PHONE_INTL}" data-track="click_llamar">{PHONE_FULL}</a>
   <div class="ctas">
    <a class="btn btn-y" href="tel:{PHONE_INTL}" data-track="click_llamar">{ICON["tel"]} Llamar ahora</a>
@@ -375,12 +371,9 @@ def foot():
   <div class="fgrid">
    <div>
     <picture><source srcset="/img/logo-oscuro.webp" type="image/webp"><img src="/img/logo-oscuro.png" alt="{NAME}" width="220" height="110" loading="lazy" style="width:220px;margin-bottom:14px"></picture>
-    <p>Servicio de grúa y asistencia en carretera 24 horas en Barcelona y su área metropolitana.</p>
     <p><strong style="color:#fff">Teléfono y WhatsApp:</strong> <a href="tel:{PHONE_INTL}">{PHONE_FULL}</a><br>
     <strong style="color:#fff">Horario:</strong> 24 horas, 365 días</p>
    </div>
-   <div><h3>Servicios</h3><ul>{"".join(f'<li><a href="/{s[3]}/">{s[1]}</a></li>' for s in SERVICES if s[3])}</ul></div>
-   <div><h3>Zonas</h3><ul><li><a href="/">Grúa en Barcelona</a></li>{zl}</ul></div>
   </div>
   <div class="legal"><span>© <span id="year">{date.today().year}</span> {NAME}. Todos los derechos reservados.</span>
    <span><a href="/privacidad/">Privacidad</a></span></div>
@@ -428,11 +421,11 @@ def crumbs_ld(name, path):
         {"@type": "ListItem", "position": 1, "name": "Inicio", "item": f"{SITE}/"},
         {"@type": "ListItem", "position": 2, "name": name, "item": f"{SITE}{path}"}]}
 
-STEPS = f"""<ol class="steps">
- <li><h3>Llama o escribe</h3><p class="muted">Contacta al {PHONE_TXT} por teléfono o WhatsApp a cualquier hora.</p></li>
- <li><h3>Envía tu ubicación</h3><p class="muted">Compártela por WhatsApp y dinos qué le pasa al vehículo y a dónde va.</p></li>
- <li><h3>Presupuesto al momento</h3><p class="muted">Te damos precio y hora estimada de llegada antes de salir. Sin sorpresas.</p></li>
- <li><h3>Llegamos y lo resolvemos</h3><p class="muted">Reparamos en el sitio si es posible o llevamos tu coche donde necesites.</p></li>
+STEPS = """<ol class="steps">
+ <li><h3>Llama o escribe</h3></li>
+ <li><h3>Envía tu ubicación</h3></li>
+ <li><h3>Te damos precio</h3></li>
+ <li><h3>Llegamos</h3></li>
 </ol>"""
 
 
@@ -442,17 +435,17 @@ def index():
     desc = f"Grúa 24h en Barcelona y área metropolitana: remolque de coches y motos, accidentes, batería y pinchazos. Precio al momento. Llama o WhatsApp {PHONE_TXT}."
     website = {"@context": "https://schema.org", "@type": "WebSite", "@id": f"{SITE}/#web", "url": f"{SITE}/", "name": NAME,
                "inLanguage": "es-ES", "publisher": {"@id": f"{SITE}/#negocio"}}
-    zones = "".join(f'<li><span>{d}</span></li>' for d in BCN_DISTRICTS) + "".join(
+    zones = '<li><span>Barcelona (todos los distritos)</span></li>' + "".join(
         f'<li><a href="/{z["slug"]}/">{z["name"]}</a></li>' for z in ZONES)
     body = f"""
 <section class="hero">
  <div class="wrap grid">
   <div>
-   <span class="badge"><span class="dot"></span> Disponibles ahora · 24h / 365 días</span>
+   <span class="badge"><span class="dot"></span> Disponibles ahora · 24h</span>
    <h1>Grúa 24 horas en <span class="hl">Barcelona</span></h1>
-   <p class="lead">Servicio de grúa y asistencia en carretera en Barcelona y toda el área metropolitana. ¿Avería, accidente, batería o pinchazo? Salimos al momento, de día y de noche.</p>
+   <p class="lead">Avería, accidente, batería o pinchazo. Salimos al momento, de día y de noche.</p>
    {ctas()}
-   <ul class="ticks"><li>Llegada rápida</li><li>Presupuesto sin compromiso</li><li>Coches, furgonetas y motos</li><li>Pago con tarjeta y Bizum</li></ul>
+   <ul class="ticks"><li>Llegada rápida</li><li>Precio antes de salir</li><li>Coches y motos</li></ul>
   </div>
   <div class="hero-logo">
    <picture><source srcset="/img/logo-oscuro.webp" type="image/webp"><img src="/img/logo-oscuro.png" alt="Asistencia 24H Barcelona - servicio de grúa" width="520" height="261" fetchpriority="high"></picture>
@@ -460,72 +453,30 @@ def index():
  </div>
 </section>
 
-<section class="alt" aria-label="Datos del servicio">
- <div class="wrap stats">
-  <div class="stat"><b>24h</b>Todos los días</div>
-  <div class="stat"><b>365</b>Días al año</div>
-  <div class="stat"><b>AMB</b>Barcelona y alrededores</div>
-  <div class="stat"><b>0 €</b>Por pedir presupuesto</div>
- </div>
-</section>
-
 <section id="servicios">
  <div class="wrap">
-  <span class="kicker">Servicios</span>
-  <h2>Servicio de grúa y asistencia en carretera en Barcelona</h2>
-  <p class="muted">Todo lo que necesitas cuando tu vehículo te deja tirado, con un único número de contacto disponible las 24 horas.</p>
+  <h2>Servicios de grúa en Barcelona</h2>
   <div class="cards">{services_html()}</div>
- </div>
-</section>
-
-<section class="light">
- <div class="wrap split">
-  <div>
-   <span class="kicker">Quiénes somos</span>
-   <h2>Tu grúa de confianza en Barcelona</h2>
-   <p class="muted">En <strong>{NAME}</strong> nos dedicamos al remolque y la asistencia en carretera de coches, furgonetas y motos. Conocemos Barcelona y sus accesos —Rondas, Gran Via, Diagonal, C-31, C-32, A-2, AP-7, B-23— y sabemos lo importante que es llegar rápido cuando estás parado en la carretera.</p>
-   <p class="muted">Trato directo, sin centralitas: hablas con quien va a ir a ayudarte. Te damos el precio antes de salir y tratamos tu vehículo como si fuera nuestro.</p>
-   <ul class="zones"><li><span>✔ Trato directo</span></li><li><span>✔ Precio claro</span></li><li><span>✔ Grúa de plataforma</span></li></ul>
-  </div>
-  <picture><source srcset="/img/logo-claro.webp" type="image/webp"><img src="/img/logo-claro.png" alt="Logo Asistencia 24H Barcelona con grúa de remolque" width="600" height="377" loading="lazy"></picture>
  </div>
 </section>
 
 <section id="como-funciona" class="alt">
  <div class="wrap">
-  <span class="kicker">Cómo funciona</span>
-  <h2>Pedir una grúa es muy fácil</h2>
+  <h2>Así de fácil</h2>
   {STEPS}
  </div>
 </section>
 
 <section id="zonas">
  <div class="wrap">
-  <span class="kicker">Zonas de servicio</span>
-  <h2>Grúa en Barcelona y área metropolitana</h2>
-  <p class="muted">Cubrimos todos los distritos de Barcelona y los municipios de alrededor. Si no ves tu zona, llámanos: seguramente también llegamos.</p>
+  <h2>Grúa en Barcelona y alrededores</h2>
   <ul class="zones">{zones}</ul>
- </div>
-</section>
-
-<section class="light">
- <div class="wrap prose">
-  <span class="kicker">Grúa en Barcelona</span>
-  <h2>Grúa barata y de confianza en Barcelona, 24 horas</h2>
-  <p>Cuando buscas una <strong>grúa cerca de ti en Barcelona</strong> quieres tres cosas: que llegue rápido, que el precio sea claro y que traten bien tu coche. En {NAME} trabajamos así desde el primer minuto: te cogemos el teléfono a cualquier hora, te damos el precio antes de salir y llevamos tu vehículo sobre plataforma hasta donde nos digas.</p>
-  <h3>¿Cuánto cuesta una grúa en Barcelona?</h3>
-  <p>El precio de una grúa depende de los kilómetros del traslado, del tipo de vehículo (coche, furgoneta o moto), de si está en un parking o en la vía pública y de la hora del servicio. Por eso no damos tarifas genéricas: mándanos tu ubicación y el destino por WhatsApp y te respondemos con un <strong>precio cerrado y sin compromiso</strong>. Sin suplementos sorpresa al llegar.</p>
-  <h3>Auxilio en carretera en rondas y autopistas</h3>
-  <p>Damos auxilio en carretera en la Ronda de Dalt, la Ronda Litoral, la Gran Via, la Diagonal, la Meridiana, la C-31, la C-32, la C-58, la A-2, la AP-7 y la B-23. Si te quedas parado en una vía rápida, ponte a salvo detrás del guardarraíl, activa la baliza V-16 y llámanos al <a href="tel:{PHONE_INTL}">{PHONE_TXT}</a>.</p>
-  <h3>¿Y si mi seguro no cubre la grúa o tarda demasiado?</h3>
-  <p>Es habitual que la asistencia del seguro tarde horas en llegar o que no cubra traslados largos o vehículos sin seguro en vigor. Nosotros hacemos el servicio de forma particular y te entregamos la factura, para que puedas reclamarla a tu aseguradora si corresponde.</p>
  </div>
 </section>
 
 <section id="preguntas" class="alt">
  <div class="wrap prose">
-  <span class="kicker">Preguntas frecuentes</span>
-  <h2>Dudas sobre nuestro servicio de grúa</h2>
+  <h2>Preguntas frecuentes</h2>
   {faq_html()}
  </div>
 </section>
@@ -537,13 +488,11 @@ def zone_faq(z):
     n = z["name"]
     return [
         (f"¿Cuánto tarda la grúa en llegar a {n}?",
-         f"Salimos en cuanto recibimos tu llamada o tu ubicación por WhatsApp. {n} está {z['near']}, así que solemos llegar en poco tiempo. Al hablar contigo te damos una hora estimada según el tráfico."),
-        (f"¿En qué zonas de {n} dais servicio?",
-         f"En todo el municipio: {z['places']}. También atendemos averías y accidentes en {z['roads']}."),
-        (f"¿A dónde lleváis mi coche desde {n}?",
-         f"A donde prefieras: un taller de {n}, tu concesionario oficial en Barcelona, tu domicilio o cualquier otra dirección. Si no conoces ningún taller en la zona, te orientamos."),
+         f"{n} está {z['near']}. Salimos al momento y te damos la hora estimada al llamar."),
+        (f"¿Dónde dais servicio en {n}?",
+         f"En todo el municipio: {z['places']}, y en {z['roads']}."),
         (f"¿Cuánto cuesta la grúa en {n}?",
-         "Depende de la distancia hasta el destino, del vehículo y de la hora. Envíanos tu ubicación y el destino por WhatsApp y te damos un precio cerrado y sin compromiso antes de salir."),
+         "Depende de la distancia y el vehículo. Te damos precio cerrado por WhatsApp antes de salir."),
     ]
 
 
@@ -565,38 +514,27 @@ def zone(z):
   <h1>Grúa 24 horas en <span class="hl">{n}</span></h1>
   <p class="lead">{z["intro"]}</p>
   {ctas(n + " - ")}
-  <ul class="ticks"><li>24h / 365 días</li><li>Presupuesto al momento</li><li>Coches, furgonetas y motos</li></ul>
+  <ul class="ticks"><li>24h / 365 días</li><li>Precio antes de salir</li></ul>
  </div>
 </section>
 
 <section>
  <div class="wrap">
-  <span class="kicker">Servicios en {n}</span>
-  <h2>Asistencia en carretera en {n}</h2>
-  <p class="muted">{n} está {z["near"]}. Atendemos averías y accidentes en todo el municipio: {z["places"]}, y en vías como {z["roads"]}.</p>
+  <h2>Servicios de grúa en {n}</h2>
   <div class="cards">{services_html()}</div>
- </div>
-</section>
-
-<section class="alt">
- <div class="wrap">
-  <span class="kicker">Cómo funciona</span>
-  <h2>Pide tu grúa en {n} en 4 pasos</h2>
-  {STEPS}
  </div>
 </section>
 
 <section>
  <div class="wrap prose">
-  <span class="kicker">Preguntas frecuentes</span>
-  <h2>Grúa en {n}: preguntas frecuentes</h2>
+  <h2>Preguntas frecuentes</h2>
   {faq_html(faq)}
  </div>
 </section>
 
 <section class="alt">
  <div class="wrap">
-  <h2>Otras zonas donde trabajamos</h2>
+  <h2>Otras zonas</h2>
   <ul class="zones"><li><a href="/">Grúa en Barcelona</a></li>{others}</ul>
  </div>
 </section>
@@ -612,8 +550,8 @@ def service_page(slug):
            "description": sp["desc"], "provider": {"@id": f"{SITE}/#negocio"},
            "areaServed": [{"@type": "City", "name": "Barcelona"}] + [{"@type": "City", "name": z["name"]} for z in ZONES],
            "hoursAvailable": "Mo-Su 00:00-23:59"}
-    sections = "".join(f"<h2>{h}</h2><p>{t}</p>" for h, t in sp["sections"])
-    zl = "".join(f'<li><a href="/{z["slug"]}/">{z["name"]}</a></li>' for z in ZONES)
+    sections = "".join(f'<article class="card"><h2 class="h3">{h}</h2><p>{t}</p></article>' for h, t in sp["sections"])
+    other = "".join(f'<li><a href="/{o[3]}/">{o[1]}</a></li>' for o in SERVICES if o[3] and o[3] != slug)
     body = f"""
 <section class="hero">
  <div class="wrap">
@@ -622,26 +560,17 @@ def service_page(slug):
   <h1>{sp["h1"]}</h1>
   <p class="lead">{sp["intro"]}</p>
   {ctas(name + " - ")}
-  <ul class="ticks"><li>Salida inmediata</li><li>Precio cerrado antes de salir</li><li>Barcelona y área metropolitana</li></ul>
- </div>
-</section>
-
-<section class="light">
- <div class="wrap prose">{sections}</div>
-</section>
-
-<section class="alt">
- <div class="wrap">
-  <span class="kicker">Cómo funciona</span>
-  <h2>Así de fácil es pedirnos ayuda</h2>
-  {STEPS}
+  <ul class="ticks"><li>24h / 365 días</li><li>Precio antes de salir</li></ul>
  </div>
 </section>
 
 <section>
+ <div class="wrap"><div class="cards">{sections}</div></div>
+</section>
+
+<section>
  <div class="wrap prose">
-  <span class="kicker">Preguntas frecuentes</span>
-  <h2>{name}: dudas habituales</h2>
+  <h2>Preguntas frecuentes</h2>
   {faq_html(sp["faq"])}
  </div>
 </section>
@@ -649,9 +578,7 @@ def service_page(slug):
 <section class="alt">
  <div class="wrap">
   <h2>Otros servicios</h2>
-  <div class="cards">{services_html(skip=slug)}</div>
-  <h2 style="margin-top:48px">Zonas donde hacemos este servicio</h2>
-  <ul class="zones"><li><a href="/">Barcelona</a></li>{zl}</ul>
+  <ul class="zones">{other}</ul>
  </div>
 </section>
 """
