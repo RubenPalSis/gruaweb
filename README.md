@@ -1,11 +1,16 @@
 # Asistencia 24H Barcelona — web
 
 Web estática (HTML + CSS, sin dependencias) para el servicio de grúa 24h en Barcelona.
+Publicada con GitHub Pages desde la rama `main`.
 
 ## Editar y regenerar
-1. Abre `build.py` y cambia la CONFIGURACIÓN (dominio, teléfono, datos legales, Google Analytics, Search Console).
-2. Ejecuta `python3 build.py` → regenera todas las páginas, `sitemap.xml`, `robots.txt` y el manifest.
+1. Cambia la CONFIGURACIÓN en `build.py` (dominio, teléfono, servicios, zonas…).
+2. Ejecuta `python3 build.py` y sube los cambios (`git add -A && git commit && git push`).
 
-## Publicar
-Sube todo el contenido de la carpeta (excepto `logo.png`, `logo2.png` y `build.py`) a tu hosting.
-`.htaccess` fuerza HTTPS + www, activa caché/compresión y la página 404 (hosting Apache).
+No edites los `.html` a mano: `build.py` los sobrescribe.
+
+## Dominio propio
+1. En `build.py`, pon tu dominio en `SITE` y ejecuta `python3 build.py`.
+2. GitHub → Settings → Pages → Custom domain: escribe tu dominio y activa "Enforce HTTPS".
+3. En tu proveedor de DNS: registro `CNAME` de `www` → `rubenpalsis.github.io`, y registros `A` del dominio raíz →
+   185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153.

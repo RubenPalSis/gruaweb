@@ -95,3 +95,7 @@ footer a{color:var(--g);text-decoration:none}footer a:hover{color:var(--y)}
  .mbar .c{background:var(--y);color:var(--k)}.mbar .w{background:var(--wa);color:#fff}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.card{position:relative}.cardlink{color:var(--w);text-decoration:none}.cardlink::after{content:"";position:absolute;inset:0}.card:hover .cardlink{color:var(--y)}
+.more{display:inline-block;margin-top:10px;font-weight:700;color:var(--y)}
+.light .prose p,.light .prose li{color:#3d424a}.light h3{color:#14161a}
+.prose h2:not(:first-child),.prose h3{margin-top:1.4em}
