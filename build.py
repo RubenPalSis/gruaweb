@@ -408,7 +408,7 @@ def services_html(h="h3", skip=None):
 
 
 def faq_html(items=FAQ):
-    return "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in items)
+    return '<div class="faq">' + "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in items) + "</div>"
 
 
 def faq_ld(items=FAQ):
@@ -475,7 +475,7 @@ def index():
 </section>
 
 <section id="preguntas" class="alt">
- <div class="wrap prose">
+ <div class="wrap">
   <h2>Preguntas frecuentes</h2>
   {faq_html()}
  </div>
@@ -526,7 +526,7 @@ def zone(z):
 </section>
 
 <section>
- <div class="wrap prose">
+ <div class="wrap">
   <h2>Preguntas frecuentes</h2>
   {faq_html(faq)}
  </div>
@@ -569,7 +569,7 @@ def service_page(slug):
 </section>
 
 <section>
- <div class="wrap prose">
+ <div class="wrap">
   <h2>Preguntas frecuentes</h2>
   {faq_html(sp["faq"])}
  </div>
