@@ -16,10 +16,7 @@ NAME = "Asistencia 24H Barcelona"
 PHONE_INTL = "+34671448639"
 PHONE_TXT = "671 44 86 39"
 PHONE_FULL = "+34 671 44 86 39"
-WA_MSG = "Hola, necesito una grúa. Estoy en: "
-OWNER = "Titular del servicio"  # nombre o razón social para el aviso legal
-NIF = "[NIF/CIF]"
-EMAIL = "[tu-email@dominio.es]"
+WA_MSG = "Hola, necesito una grúa"
 GA4_ID = ""  # p.ej. "G-XXXXXXX" para Google Analytics (opcional)
 GSC_VERIFY = ""  # código de verificación de Google Search Console (opcional)
 # -----------------------------------------------
@@ -28,8 +25,10 @@ ROOT = Path(__file__).parent
 TODAY = date.today().isoformat()
 
 
-def wa(extra=""):
-    return f"https://wa.me/{PHONE_INTL[1:]}?text={quote(WA_MSG + extra)}"
+def wa(motivo="", lugar=""):
+    """Enlace de WhatsApp con mensaje ya escrito: motivo (p.ej. "mi coche no arranca") y lugar (p.ej. "Badalona")."""
+    msg = WA_MSG + (f", {motivo}" if motivo else "") + ". Estoy en: " + (f"{lugar}, " if lugar else "")
+    return f"https://wa.me/{PHONE_INTL[1:]}?text={quote(msg)}"
 
 
 ICON = {
@@ -46,6 +45,11 @@ SICON = {
     "fuel": f'<svg {SV}><path d="M3 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18M3 22h12M6 7h6m3 3h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg>',
     "llave": f'<svg {SV}><path d="M14.7 6.3a4 4 0 0 0 5 5L21 12.6 12.6 21a2.1 2.1 0 0 1-3-3L18 9.6l-1.3-1.3a4 4 0 0 0-2-2z"/><path d="m3 21 6-6"/></svg>',
     "km": f'<svg {SV}><path d="M3 12h18M3 12l4-4m-4 4 4 4M21 12l-4-4m4 4-4 4"/></svg>',
+    "reloj": f'<svg {SV}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    "euro": f'<svg {SV}><path d="M17 6.5A7 7 0 1 0 17 17.5M4 10h9M4 14h9"/></svg>',
+    "escudo": f'<svg {SV}><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>',
+    "pin": f'<svg {SV}><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>',
+    "chat": f'<svg {SV}><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>',
     "baja": f'<svg {SV}><path d="M3 6h18M8 6V4h8v2m-9 0 1 14h8l1-14"/></svg>',
 }
 
@@ -367,16 +371,30 @@ def foot():
  </div>
 </section>
 <footer>
+ <div class="road" aria-hidden="true"></div>
  <div class="wrap">
   <div class="fgrid">
-   <div>
-    <picture><source srcset="/img/logo-oscuro.webp" type="image/webp"><img src="/img/logo-oscuro.png" alt="{NAME}" width="220" height="110" loading="lazy" style="width:220px;margin-bottom:14px"></picture>
-    <p><strong style="color:#fff">Teléfono y WhatsApp:</strong> <a href="tel:{PHONE_INTL}">{PHONE_FULL}</a><br>
-    <strong style="color:#fff">Horario:</strong> 24 horas, 365 días</p>
+   <div class="fbrand">
+    <picture><source srcset="/img/logo-oscuro.webp" type="image/webp"><img src="/img/logo-oscuro.png" alt="{NAME}" width="240" height="120" loading="lazy"></picture>
+    <p>Grúa y asistencia en carretera 24h en Barcelona y área metropolitana.</p>
+    <div class="fbtns">
+     <a class="btn btn-y" href="tel:{PHONE_INTL}" data-track="click_llamar">{ICON["tel"]} Llamar</a>
+     <a class="btn btn-wa" href="{wa()}" target="_blank" rel="noopener" data-track="click_whatsapp">{ICON["wa"]} WhatsApp</a>
+    </div>
+   </div>
+   <nav aria-label="Servicios"><h3>Servicios</h3><ul>{"".join(f'<li><a href="/{s[3]}/">{s[1]}</a></li>' for s in SERVICES if s[3])}</ul></nav>
+   <nav aria-label="Zonas"><h3>Zonas</h3><ul class="cols">{"".join(f'<li><a href="/{z["slug"]}/">{z["name"].replace("de Llobregat", "").replace("del Vallès", "").strip()}</a></li>' for z in ZONES)}</ul></nav>
+   <div><h3>Contacto</h3>
+    <ul class="fcontact">
+     <li>{SICON["reloj"]}<span><b>24 horas</b>365 días al año</span></li>
+     <li>{ICON["tel"]}<span><b><a href="tel:{PHONE_INTL}">{PHONE_FULL}</a></b>Teléfono y WhatsApp</span></li>
+     <li>{SICON["pin"]}<span><b>Barcelona</b>y área metropolitana</span></li>
+    </ul>
+    <ul class="pay" aria-label="Formas de pago"><li>Efectivo</li><li>Tarjeta</li><li>Bizum</li></ul>
    </div>
   </div>
-  <div class="legal"><span>© <span id="year">{date.today().year}</span> {NAME}. Todos los derechos reservados.</span>
-   <span><a href="/privacidad/">Privacidad</a></span></div>
+  <div class="legal"><span>© <span id="year">{date.today().year}</span> {NAME}</span>
+   <a href="#main" class="up">Volver arriba ↑</a></div>
  </div>
 </footer>
 <a class="wa-float" href="{wa()}" target="_blank" rel="noopener" aria-label="Pedir grúa por WhatsApp" data-track="click_whatsapp">{ICON["wa"]}</a>
@@ -390,10 +408,10 @@ def foot():
 """
 
 
-def ctas(extra=""):
+def ctas(motivo="", lugar=""):
     return f"""<div class="ctas">
  <a class="btn btn-y" href="tel:{PHONE_INTL}" data-track="click_llamar">{ICON["tel"]} Llamar: {PHONE_TXT}</a>
- <a class="btn btn-wa" href="{wa(extra)}" target="_blank" rel="noopener" data-track="click_whatsapp">{ICON["wa"]} Pedir grúa por WhatsApp</a>
+ <a class="btn btn-wa" href="{wa(motivo, lugar)}" target="_blank" rel="noopener" data-track="click_whatsapp">{ICON["wa"]} Pedir grúa por WhatsApp</a>
 </div>"""
 
 
@@ -437,6 +455,12 @@ def index():
                "inLanguage": "es-ES", "publisher": {"@id": f"{SITE}/#negocio"}}
     zones = '<li><span>Barcelona (todos los distritos)</span></li>' + "".join(
         f'<li><a href="/{z["slug"]}/">{z["name"]}</a></li>' for z in ZONES)
+    quick = "".join(
+        f'<a class="q" href="{wa(m)}" target="_blank" rel="noopener" data-track="click_whatsapp">{SICON[i]}<span>{t}</span></a>'
+        for i, t, m in [("bat", "No arranca", "mi coche no arranca"), ("acc", "Accidente", "he tenido un accidente"),
+                        ("rueda", "Pinchazo", "he pinchado una rueda"), ("fuel", "Sin gasolina", "me he quedado sin combustible"),
+                        ("grua", "Avería", "mi coche está averiado"), ("moto", "Moto", "es para una moto"),
+                        ("km", "Traslado", "quiero presupuesto para un traslado"), ("baja", "Desguace", "quiero llevar un coche al desguace")])
     body = f"""
 <section class="hero">
  <div class="wrap grid">
@@ -450,6 +474,23 @@ def index():
   <div class="hero-logo">
    <picture><source srcset="/img/logo-oscuro.webp" type="image/webp"><img src="/img/logo-oscuro.png" alt="Asistencia 24H Barcelona - servicio de grúa" width="520" height="261" fetchpriority="high"></picture>
   </div>
+ </div>
+</section>
+
+<section class="feats" aria-label="Por qué elegirnos">
+ <div class="wrap fgrid4">
+  <div class="feat">{SICON["reloj"]}<b>24h / 365 días</b><span>Noches y festivos</span></div>
+  <div class="feat">{SICON["pin"]}<b>Llegada rápida</b><span>Barcelona y AMB</span></div>
+  <div class="feat">{SICON["euro"]}<b>Precio cerrado</b><span>Antes de salir</span></div>
+  <div class="feat">{SICON["escudo"]}<b>Grúa de plataforma</b><span>Sin dañar tu coche</span></div>
+ </div>
+</section>
+
+<section class="quick">
+ <div class="wrap center">
+  <h2>¿Qué le pasa a tu coche?</h2>
+  <p class="muted">Pulsa y te respondemos por WhatsApp al momento.</p>
+  <div class="qgrid">{quick}</div>
  </div>
 </section>
 
@@ -467,10 +508,24 @@ def index():
  </div>
 </section>
 
+<section class="truck">
+ <div class="wrap split">
+  <picture><source srcset="/img/logo-claro.webp" type="image/webp"><img src="/img/logo-claro.png" alt="Grúa de Asistencia 24H Barcelona" width="600" height="377" loading="lazy"></picture>
+  <div>
+   <h2>Tu coche, en buenas manos</h2>
+   <ul class="checks"><li>Trato directo, sin centralitas</li><li>Coches, furgonetas, motos y eléctricos</li><li>Al taller, al concesionario o a casa</li><li>Pago con tarjeta, Bizum o efectivo</li></ul>
+   {ctas()}
+  </div>
+ </div>
+</section>
+
 <section id="zonas">
- <div class="wrap">
-  <h2>Grúa en Barcelona y alrededores</h2>
-  <ul class="zones">{zones}</ul>
+ <div class="wrap split zsplit">
+  <div>
+   <h2>Grúa en Barcelona y alrededores</h2>
+   <ul class="zones">{zones}</ul>
+  </div>
+  <div class="map"><iframe title="Zona de servicio: Barcelona y área metropolitana" src="https://maps.google.com/maps?q=Barcelonahttps://www.google.com/maps?q=Barcelona&amp;z=10&amp;output=embedamp;t=https://www.google.com/maps?q=Barcelona&amp;z=10&amp;output=embedamp;z=10https://www.google.com/maps?q=Barcelona&amp;z=10&amp;output=embedamp;ie=UTF8https://www.google.com/maps?q=Barcelona&amp;z=10&amp;output=embedamp;iwloc=https://www.google.com/maps?q=Barcelona&amp;z=10&amp;output=embedamp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
  </div>
 </section>
 
@@ -513,7 +568,7 @@ def zone(z):
   <span class="badge"><span class="dot"></span> Disponibles ahora en {n}</span>
   <h1>Grúa 24 horas en <span class="hl">{n}</span></h1>
   <p class="lead">{z["intro"]}</p>
-  {ctas(n + " - ")}
+  {ctas(lugar=n)}
   <ul class="ticks"><li>24h / 365 días</li><li>Precio antes de salir</li></ul>
  </div>
 </section>
@@ -559,7 +614,7 @@ def service_page(slug):
   <span class="badge"><span class="dot"></span> Servicio 24h / 365 días</span>
   <h1>{sp["h1"]}</h1>
   <p class="lead">{sp["intro"]}</p>
-  {ctas(name + " - ")}
+  {ctas(motivo=name.lower())}
   <ul class="ticks"><li>24h / 365 días</li><li>Precio antes de salir</li></ul>
  </div>
 </section>
@@ -583,25 +638,6 @@ def service_page(slug):
 </section>
 """
     return head(f"{sp['title']} ☎ {PHONE_TXT}", sp["desc"], path, [crumbs_ld(name, path), svc, faq_ld(sp["faq"])]) + body + foot()
-
-
-def legal_page(slug, title, html):
-    body = f"""<section><div class="wrap prose"><nav class="breadcrumb"><a href="/">Inicio</a> › {title}</nav><h1>{title}</h1>{html}</div></section>"""
-    return head(f"{title} | {NAME}", f"{title} de {NAME}.", f"/{slug}/", robots="noindex, follow") + body + foot()
-
-
-LEGAL = {
-    "privacidad": ("Política de privacidad", f"""
-<p>De acuerdo con el Reglamento (UE) 2016/679 (RGPD) y la LO 3/2018 (LOPDGDD):</p>
-<ul><li><strong>Responsable:</strong> {OWNER} ({NIF}) · {PHONE_FULL} · {EMAIL}</li>
-<li><strong>Finalidad:</strong> atender tu solicitud de grúa o asistencia, elaborar presupuestos y prestar el servicio.</li>
-<li><strong>Legitimación:</strong> tu consentimiento al contactarnos y la ejecución del servicio solicitado.</li>
-<li><strong>Datos tratados:</strong> nombre, teléfono, ubicación y datos del vehículo que nos facilites.</li>
-<li><strong>Conservación:</strong> el tiempo necesario para prestar el servicio y cumplir obligaciones legales.</li>
-<li><strong>Destinatarios:</strong> no se ceden datos a terceros salvo obligación legal. Si nos contactas por WhatsApp se aplica también la política de WhatsApp (Meta).</li>
-<li><strong>Derechos:</strong> puedes ejercer acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a {EMAIL}, y reclamar ante la Agencia Española de Protección de Datos (www.aepd.es).</li></ul>
-<p>Esta web no tiene formularios: solo recibimos los datos que tú nos envías por teléfono o WhatsApp.</p>"""),
-}
 
 
 def page_404():
@@ -641,8 +677,6 @@ def main():
         write(f"{z['slug']}/index.html", zone(z))
     for slug in SERVICE_PAGES:
         write(f"{slug}/index.html", service_page(slug))
-    for slug, (t, h) in LEGAL.items():
-        write(f"{slug}/index.html", legal_page(slug, t, h))
     write("404.html", page_404())
 
     urls = [("/", "1.0", "weekly")] + [(f"/{s}/", "0.9", "monthly") for s in SERVICE_PAGES] + [(f"/{z['slug']}/", "0.8", "monthly") for z in ZONES]
