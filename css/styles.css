@@ -204,3 +204,4 @@ footer .btn-y,footer .btn-y:hover{color:var(--k)}footer .btn-wa,footer .btn-wa:h
  .fcontact li:nth-child(2){grid-column:1/-1;order:-1}
 }
 @media(max-width:600px){.nav .btn{display:none}}
+@media(max-width:600px){.truck .ctas{display:none}}

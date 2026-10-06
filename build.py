@@ -513,6 +513,7 @@ def index():
   <div>
    <h2>Tu coche, en buenas manos</h2>
    <ul class="checks"><li>Trato directo, sin centralitas</li><li>Coches, furgonetas, motos y eléctricos</li><li>Al taller, al concesionario o a casa</li><li>Pago con tarjeta, Bizum o efectivo</li></ul>
+   {ctas()}
   </div>
  </div>
 </section>
