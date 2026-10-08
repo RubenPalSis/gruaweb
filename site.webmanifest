@@ -1,6 +1,6 @@
 {
-  "name": "Asistencia 24H Barcelona",
-  "short_name": "Grúa 24H BCN",
+  "name": "PL Grúas",
+  "short_name": "PL Grúas",
   "description": "Grúa y asistencia en carretera 24h en Barcelona",
   "start_url": "./",
   "display": "standalone",

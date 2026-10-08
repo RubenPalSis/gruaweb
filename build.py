@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Genera la web estática de Asistencia 24H Barcelona.
+"""Genera la web estática de PL Grúas.
 
 Edita la CONFIGURACIÓN y ejecuta:  python3 build.py
 Crea index.html, páginas de zona, páginas legales, 404, sitemap.xml, robots.txt y manifest.
@@ -12,7 +12,7 @@ from urllib.parse import quote
 
 # ---------------- CONFIGURACIÓN ----------------
 SITE = "https://gruaspl.es"  # <- cambia por tu dominio real (sin / final)
-NAME = "Asistencia 24H Barcelona"
+NAME = "PL Grúas"
 PHONE_INTL = "+34671448639"
 PHONE_TXT = "671 44 86 39"
 PHONE_FULL = "+34 671 44 86 39"
@@ -326,7 +326,7 @@ BUSINESS = {
     "@type": ["AutomotiveBusiness", "EmergencyService"],
     "@id": f"{SITE}/#negocio",
     "name": NAME,
-    "alternateName": ["Grúas Asistencia 24H Barcelona", "Grúa 24 horas Barcelona"],
+    "alternateName": ["PL Grúas Servicio 24H", "Grúa 24 horas Barcelona"],
     "description": "Gestión y coordinación, con una red de profesionales colaboradores, de servicios de grúa y asistencia en carretera 24 horas en Barcelona y área metropolitana: remolque de coches, rescate tras accidente, arranque de batería, pinchazos y traslados.",
     "url": f"{SITE}/",
     "telephone": PHONE_FULL,
@@ -406,7 +406,7 @@ def head(title, desc, path, extra_ld=(), robots="index, follow, max-image-previe
 <header class="site">
  <div class="wrap nav">
   <a class="brand" href="/" aria-label="{NAME} - Inicio"><img src="/img/icon-192.png" alt="" width="46" height="46">
-   <span>ASISTENCIA 24H<small>BARCELONA</small></span></a>
+   <span>PL GRÚAS<small>SERVICIO 24H</small></span></a>
   <nav aria-label="Principal"><ul class="menu">
    <li><a href="/#servicios">Servicios</a></li><li><a href="/#zonas">Zonas</a></li>
    <li><a href="/#como-funciona">Cómo funciona</a></li><li><a href="/#preguntas">Preguntas</a></li><li><a href="/#contacto">Contacto</a></li>
@@ -437,7 +437,7 @@ def foot(wa_url=None):
  <div class="wrap">
   <div class="fgrid">
    <div class="fbrand">
-    <picture><source srcset="/img/logo-oscuro.webp" type="image/webp"><img src="/img/logo-oscuro.png" alt="{NAME}" width="240" height="120" loading="lazy"></picture>
+    <picture><source srcset="/img/logo-oscuro.webp" type="image/webp"><img src="/img/logo-oscuro.png" alt="{NAME}" width="240" height="214" loading="lazy"></picture>
     <p>Gestión de servicios de grúa y asistencia en carretera 24h en Barcelona y área metropolitana, con una amplia red de profesionales colaboradores.</p>
    </div>
    <nav aria-label="Servicios"><h3>Servicios</h3><ul>{"".join(f'<li><a href="/{s[3]}/">{s[1]}</a></li>' for s in SERVICES if s[3])}</ul></nav>
@@ -524,7 +524,7 @@ def index():
    {ctas()}
   </div>
   <div class="hero-logo">
-   <picture><source srcset="/img/logo-oscuro.webp" type="image/webp"><img src="/img/logo-oscuro.png" alt="Asistencia 24H Barcelona - servicio de grúa" width="520" height="261" fetchpriority="high"></picture>
+   <picture><source srcset="/img/logo-oscuro.webp" type="image/webp"><img src="/img/logo-oscuro.png" alt="PL Grúas - servicio de grúa 24H" width="520" height="464" fetchpriority="high"></picture>
   </div>
  </div>
 </section>
@@ -562,7 +562,7 @@ def index():
 
 <section class="truck light" id="colaboradores">
  <div class="wrap split">
-  <picture><source srcset="/img/logo-claro.webp" type="image/webp"><img src="/img/logo-claro.png" alt="Grúa de Asistencia 24H Barcelona" width="600" height="377" loading="lazy"></picture>
+  <picture><source srcset="/img/logo-claro.webp" type="image/webp"><img src="/img/logo-claro.png" alt="Logo de PL Grúas" width="600" height="535" loading="lazy"></picture>
   <div>
    <h2>{RED[0]}</h2>
    {"".join(f'<p class="muted">{t}</p>' for t in RED[1])}
@@ -828,7 +828,7 @@ def main():
           'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n' + sm + "</urlset>\n")
     write("robots.txt", f"User-agent: *\nAllow: /\nDisallow: /404.html\n\nSitemap: {SITE}/sitemap.xml\n")
     write("site.webmanifest", json.dumps({
-        "name": NAME, "short_name": "Grúa 24H BCN", "description": "Grúa y asistencia en carretera 24h en Barcelona",
+        "name": NAME, "short_name": "PL Grúas", "description": "Grúa y asistencia en carretera 24h en Barcelona",
         "start_url": "./", "display": "standalone", "background_color": "#0f0f10", "theme_color": "#0f0f10", "lang": "es",
         "icons": [{"src": "img/icon-192.png", "sizes": "192x192", "type": "image/png"},
                   {"src": "img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}]},

@@ -1,4 +1,4 @@
-# Asistencia 24H Barcelona — web
+# PL Grúas — web
 
 Web estática (HTML + CSS, sin dependencias) para el servicio de grúa 24h en Barcelona.
 Publicada con GitHub Pages desde la rama `main`.
