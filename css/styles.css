@@ -214,7 +214,7 @@ footer .btn-y,footer .btn-y:hover{color:var(--k)}
 .steps li::before{content:counter(s);position:absolute;top:-6px;left:calc(50% + 22px);z-index:2;width:28px;height:28px;border-radius:50%;background:var(--y);color:var(--k);font-weight:900;font-size:.85rem;display:grid;place-items:center}
 .steps h3{margin:0 0 4px;font-size:1.1rem}.steps p{margin:0;color:var(--g);font-size:.92rem}
 @media(max-width:860px){.steps{grid-template-columns:1fr 1fr}.steps::before{display:none}}
-@media(max-width:600px){#como-funciona{display:none}}
+@media(max-width:600px){#pasos{display:none}}
 /* ===== Páginas de servicio ===== */
 .shero{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
 .sicon{width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,200,0,.22),rgba(255,200,0,.05) 70%);border:2px solid rgba(255,200,0,.35);display:grid;place-items:center}
@@ -224,3 +224,12 @@ footer .btn-y,footer .btn-y:hover{color:var(--k)}
 .inc .tick{flex:none;width:34px;height:34px;border-radius:50%;background:var(--y);color:var(--k);display:grid;place-items:center;font-weight:900}
 .inc h3{margin:2px 0 4px;font-size:1.08rem}.inc p{margin:0;color:var(--g)}
 @media(max-width:600px){.shero{grid-template-columns:1fr;gap:0}.sicon{display:none}.incs{grid-template-columns:1fr;gap:10px;margin-top:16px}.inc{padding:14px}}
+/* ===== Colaboradores y textos legales ===== */
+.incs.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+.inc p+p{margin-top:.6em}
+.incs+.muted{margin-top:24px}
+.truck .muted{margin:0 0 .9em}
+.cta-band .nota{font-size:.85rem;line-height:1.5;max-width:760px;margin:22px auto 0;opacity:.85}
+.flegal a{white-space:nowrap}
+.prose h2{font-size:1.35rem}.prose ul{padding-left:1.2em}
+mark{background:var(--y);color:var(--k);padding:0 4px;border-radius:4px}

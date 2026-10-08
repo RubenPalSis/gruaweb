@@ -19,6 +19,11 @@ PHONE_FULL = "+34 671 44 86 39"
 WA_MSG = "Hola, necesito una grúa"
 GA4_ID = ""  # p.ej. "G-XXXXXXX" para Google Analytics (opcional)
 GSC_VERIFY = ""  # código de verificación de Google Search Console (opcional)
+# Datos del titular para Aviso legal y Política de privacidad (obligatorios por la LSSI y el RGPD)
+TITULAR = ""  # nombre y apellidos o razón social
+NIF = ""
+DOMICILIO = ""  # dirección completa
+EMAIL = ""
 # -----------------------------------------------
 
 ROOT = Path(__file__).parent
@@ -161,7 +166,7 @@ FAQ = [
     ("¿Lleváis el coche a mi taller?",
      "Sí, al taller, concesionario o domicilio que nos digas, dentro y fuera de Barcelona."),
     ("¿Y si mi seguro tarda o no me cubre?",
-     "Hacemos el servicio de forma particular y te damos la factura para que la reclames a tu aseguradora."),
+     "Puedes pedir el servicio de forma particular: el profesional que lo realice te entregará la factura para que la reclames a tu aseguradora."),
     ("¿Qué hago si me quedo parado en una ronda o autopista?",
      "Ponte el chaleco, activa la baliza V-16, sal detrás del guardarraíl y llámanos. Cubrimos rondas, Gran Via, Diagonal, C-31, C-32, C-58, A-2, AP-7 y B-23."),
 ]
@@ -212,9 +217,9 @@ SERVICE_PAGES = {
         sections=[
             ("Qué hacer tras un accidente", "Ponte a salvo, llama al 112 si hay heridos y después a nosotros."),
             ("Rondas, autopistas y vías rápidas", "Rondas, Gran Via, C-31, C-32, A-2, AP-7 y B-23."),
-            ("Si tu seguro tarda", "Hacemos el servicio y te damos factura para reclamarla."),
+            ("Si tu seguro tarda", "Puedes pedirlo de forma particular y reclamar la factura a tu seguro."),
         ],
-        faq=[("¿Trabajáis con seguros?", "Podemos hacer el servicio de forma particular y darte la factura detallada para que la presentes a tu aseguradora. Consúltanos tu caso concreto."),
+        faq=[("¿Trabajáis con seguros?", "Puedes pedir el servicio de forma particular: el profesional que lo realice te dará la factura detallada para que la presentes a tu aseguradora. Consúltanos tu caso concreto."),
              ("¿Retiráis coches que no ruedan?", "Sí. Los vehículos accidentados con ruedas o dirección dañadas se cargan con la plataforma y el cabrestante de la grúa.")]),
     "arranque-bateria-barcelona": dict(
         h1="Arranque de batería en Barcelona",
@@ -274,6 +279,39 @@ SERVICE_PAGES = {
              ("¿Recogéis en parkings comunitarios?", "Sí, en la mayoría de los casos. Indícanos la altura del parking y el acceso.")]),
 }
 
+NOTA_COLABORADORES = ("Algunos servicios pueden ser realizados por profesionales autónomos o empresas colaboradoras independientes. "
+                      "En estos casos, el servicio será ejecutado y cobrado directamente por el colaborador asignado, quien actuará como "
+                      "profesional independiente. Al solicitar el servicio, el cliente acepta que la prestación pueda ser realizada por uno de nuestros colaboradores.")
+
+RED = ("Amplia red de profesionales colaboradores", [
+    "Contamos con una amplia red de profesionales autónomos y empresas colaboradoras independientes especializados en asistencia en carretera, transporte y traslado de vehículos.",
+    "Gracias a nuestra red de colaboradores podemos ofrecer una mayor cobertura geográfica, rapidez de respuesta y disponibilidad, adaptándonos a las necesidades de cada servicio.",
+    "Cuando recibimos una solicitud, podemos asignarla a uno de nuestros colaboradores disponibles en la zona correspondiente, en función de las características y necesidades del servicio.",
+])
+
+FUNCIONAMIENTO = [  # (título, párrafos) — portada y Condiciones de servicio
+    ("Gestión e intermediación de servicios", [
+        "Nuestra empresa se encarga de recibir, gestionar y coordinar solicitudes de asistencia y transporte de vehículos, poniendo al cliente en contacto con profesionales colaboradores independientes.",
+        "Una vez aceptado el servicio, el colaborador asignado se encarga de realizar directamente la prestación utilizando sus propios vehículos, medios y recursos profesionales.",
+        "El colaborador será quien preste materialmente el servicio y cobre directamente al cliente por el trabajo realizado."]),
+    ("Profesionales independientes", [
+        "Los servicios pueden ser realizados por profesionales autónomos o empresas colaboradoras independientes.",
+        "Cada colaborador desarrolla su actividad por cuenta propia y es responsable de disponer de los vehículos, medios, permisos, autorizaciones y seguros necesarios para ejercer legalmente su actividad.",
+        "La asignación de un colaborador permite ofrecer al cliente una respuesta rápida y una mayor cobertura, especialmente cuando el servicio se encuentra fuera de nuestra zona habitual de actuación."]),
+    ("Condiciones del servicio", [
+        "Antes de la realización del servicio, el cliente será informado de las condiciones y del precio correspondiente.",
+        "Cuando el servicio sea realizado por un colaborador independiente, el cliente será informado de que la ejecución material del servicio corresponde al profesional o empresa colaboradora asignada.",
+        "El pago del servicio se realizará directamente al colaborador que haya realizado la asistencia o transporte, quien será responsable de emitir el correspondiente justificante o factura conforme a la normativa aplicable.",
+        "Nuestra empresa percibe una comisión del colaborador por las labores de captación, gestión y coordinación del servicio."]),
+    ("Atención de incidencias", [
+        "En caso de producirse cualquier incidencia relacionada con un servicio realizado por un colaborador, nuestra empresa podrá facilitar la gestión y comunicación entre el cliente y el profesional que haya realizado materialmente el servicio.",
+        "El colaborador será responsable de la correcta ejecución material del servicio dentro del ámbito de sus obligaciones profesionales y legales, así como de disponer de los seguros correspondientes.",
+        "Todo ello se entiende sin perjuicio de las responsabilidades que legalmente puedan corresponder a cada una de las partes."]),
+]
+
+LEGAL = [("aviso-legal", "Aviso legal"), ("politica-privacidad", "Política de privacidad"),
+         ("politica-cookies", "Política de cookies"), ("condiciones-servicio", "Condiciones de servicio")]
+
 # ---------------- PLANTILLAS ----------------
 # CSS en línea (menos peticiones = carga más rápida, mejor para Google)
 CSS = re.sub(r"\s*\n\s*", "", re.sub(r"/\*.*?\*/", "", (ROOT / "css/styles.css").read_text(encoding="utf-8"), flags=re.S))
@@ -289,14 +327,13 @@ BUSINESS = {
     "@id": f"{SITE}/#negocio",
     "name": NAME,
     "alternateName": ["Grúas Asistencia 24H Barcelona", "Grúa 24 horas Barcelona"],
-    "description": "Servicio de grúa y asistencia en carretera 24 horas en Barcelona y área metropolitana: remolque de coches, rescate tras accidente, arranque de batería, pinchazos y traslados.",
+    "description": "Gestión y coordinación, con una red de profesionales colaboradores, de servicios de grúa y asistencia en carretera 24 horas en Barcelona y área metropolitana: remolque de coches, rescate tras accidente, arranque de batería, pinchazos y traslados.",
     "url": f"{SITE}/",
     "telephone": PHONE_FULL,
     "logo": f"{SITE}/img/logo-claro.png",
     "image": [f"{SITE}/img/og-image.jpg", f"{SITE}/img/logo-claro.png", f"{SITE}/img/logo-oscuro.png"],
     "priceRange": "€€",
     "currenciesAccepted": "EUR",
-    "paymentAccepted": "Efectivo, Tarjeta, Bizum, Transferencia",
     "address": {"@type": "PostalAddress", "addressLocality": "Barcelona", "addressRegion": "Cataluña", "addressCountry": "ES"},
     "geo": {"@type": "GeoCoordinates", "latitude": 41.3874, "longitude": 2.1686},
     "openingHoursSpecification": [{
@@ -392,6 +429,7 @@ def foot(wa_url=None):
   <div class="ctas">
    <a class="btn btn-y" href="tel:{PHONE_INTL}" data-track="click_llamar">{ICON["tel"]} Llamar ahora</a>
   </div>
+  <p class="nota"><b>Importante:</b> {NOTA_COLABORADORES}</p>
  </div>
 </section>
 <footer>
@@ -400,7 +438,7 @@ def foot(wa_url=None):
   <div class="fgrid">
    <div class="fbrand">
     <picture><source srcset="/img/logo-oscuro.webp" type="image/webp"><img src="/img/logo-oscuro.png" alt="{NAME}" width="240" height="120" loading="lazy"></picture>
-    <p>Grúa y asistencia en carretera 24h en Barcelona y área metropolitana.</p>
+    <p>Gestión de servicios de grúa y asistencia en carretera 24h en Barcelona y área metropolitana, con una amplia red de profesionales colaboradores.</p>
    </div>
    <nav aria-label="Servicios"><h3>Servicios</h3><ul>{"".join(f'<li><a href="/{s[3]}/">{s[1]}</a></li>' for s in SERVICES if s[3])}</ul></nav>
    <nav aria-label="Zonas"><h3>Zonas</h3><ul class="cols">{"".join(f'<li><a href="/{z["slug"]}/">{z["name"].replace("de Llobregat", "").replace("del Vallès", "").strip()}</a></li>' for z in ZONES)}</ul></nav>
@@ -410,10 +448,10 @@ def foot(wa_url=None):
      <li>{ICON["tel"]}<span><b><a href="tel:{PHONE_INTL}">{PHONE_FULL}</a></b>Teléfono y WhatsApp</span></li>
      <li>{SICON["pin"]}<span><b>Barcelona</b>y área metropolitana</span></li>
     </ul>
-    <ul class="pay" aria-label="Formas de pago"><li>Efectivo</li><li>Tarjeta</li><li>Bizum</li></ul>
    </div>
   </div>
   <div class="legal"><span>© <span id="year">{date.today().year}</span> {NAME}</span>
+   <nav class="flegal" aria-label="Información legal">{" | ".join(f'<a href="/{s}/">{t}</a>' for s, t in LEGAL)}</nav>
    <span>Página web creada por <a href="https://zetaweb.es/" target="_blank" rel="noopener">ZetaWeb</a></span></div>
  </div>
 </footer>
@@ -515,21 +553,28 @@ def index():
  </div>
 </section>
 
-<section id="como-funciona" class="alt">
+<section id="pasos" class="alt">
  <div class="wrap">
   <h2>Así de fácil</h2>
   {STEPS}
  </div>
 </section>
 
-<section class="truck">
+<section class="truck light" id="colaboradores">
  <div class="wrap split">
   <picture><source srcset="/img/logo-claro.webp" type="image/webp"><img src="/img/logo-claro.png" alt="Grúa de Asistencia 24H Barcelona" width="600" height="377" loading="lazy"></picture>
   <div>
-   <h2>Tu coche, en buenas manos</h2>
-   <ul class="checks"><li>Trato directo, sin centralitas</li><li>Coches, furgonetas, motos y eléctricos</li><li>Al taller, al concesionario o a casa</li><li>Pago con tarjeta, Bizum o efectivo</li></ul>
-   {ctas()}
+   <h2>{RED[0]}</h2>
+   {"".join(f'<p class="muted">{t}</p>' for t in RED[1])}
   </div>
+ </div>
+</section>
+
+<section id="como-funciona">
+ <div class="wrap">
+  <h2>Cómo funciona nuestro servicio</h2>
+  <div class="incs two">{"".join(f'<article class="inc"><span class="tick">✓</span><div><h3>{h}</h3>{"".join(f"<p>{t}</p>" for t in ps)}</div></article>' for h, ps in FUNCIONAMIENTO)}</div>
+  <p class="muted">Más información en nuestras <a href="/condiciones-servicio/">condiciones de servicio</a>.</p>
  </div>
 </section>
 
@@ -666,6 +711,81 @@ def page_404():
     return head(f"Página no encontrada | {NAME}", "Página no encontrada.", "/404.html", robots="noindex, follow") + body + foot()
 
 
+def dato(v, etiqueta):
+    return v or f"<mark>[{etiqueta}]</mark>"
+
+
+def legal_pages():
+    tit, nif, dom, mail = dato(TITULAR, "Titular"), dato(NIF, "NIF"), dato(DOMICILIO, "Domicilio"), dato(EMAIL, "Email")
+    ps = lambda lst: "".join(f"<p>{t}</p>" for t in lst)
+    analytics = (" Además, utilizamos Google Analytics para obtener estadísticas anónimas de visitas; estas cookies solo se instalan si las aceptas."
+                 if GA4_ID else " No utilizamos cookies analíticas ni publicitarias.")
+    return {
+        "aviso-legal": f"""
+<h2>Datos identificativos</h2>
+<p>En cumplimiento del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa de los datos del titular de este sitio web:</p>
+<ul><li>Titular: {tit}</li><li>NIF: {nif}</li><li>Domicilio: {dom}</li><li>Teléfono: {PHONE_FULL}</li><li>Email: {mail}</li><li>Web: {SITE}</li></ul>
+<h2>Objeto</h2>
+<p>Este sitio web informa sobre el servicio de recepción, gestión y coordinación de solicitudes de grúa, asistencia en carretera y transporte de vehículos que presta {NAME}. Los servicios pueden ser realizados materialmente por profesionales autónomos o empresas colaboradoras independientes, tal y como se detalla en las <a href="/condiciones-servicio/">condiciones de servicio</a>.</p>
+<h2>Propiedad intelectual</h2>
+<p>Los textos, imágenes, logotipos y diseño de esta web son propiedad del titular o se usan con autorización. No se permite su reproducción sin consentimiento previo.</p>
+<h2>Responsabilidad</h2>
+<p>El titular no se hace responsable del mal uso que se haga de los contenidos de la web ni de los contenidos de sitios de terceros enlazados desde ella.</p>
+<h2>Legislación aplicable</h2>
+<p>Este aviso legal se rige por la legislación española.</p>""",
+        "politica-privacidad": f"""
+<h2>Responsable del tratamiento</h2>
+<p>{tit} · NIF {nif} · {dom} · {mail} · {PHONE_FULL}</p>
+<h2>Qué datos tratamos y para qué</h2>
+<p>Cuando nos llamas o escribes por WhatsApp tratamos los datos que nos facilitas (nombre, teléfono, ubicación, datos del vehículo y del servicio solicitado) para gestionar tu solicitud, informarte del precio y coordinar la asistencia.</p>
+<h2>Legitimación</h2>
+<p>La base legal es la aplicación de medidas precontractuales y la ejecución del servicio que solicitas.</p>
+<h2>Destinatarios</h2>
+<p>Para poder prestar el servicio, tus datos se comunicarán al profesional autónomo o empresa colaboradora independiente que lo vaya a realizar. Las conversaciones por WhatsApp se rigen además por la política de privacidad de WhatsApp. No se ceden datos a otros terceros salvo obligación legal.</p>
+<h2>Conservación</h2>
+<p>Conservamos los datos el tiempo necesario para gestionar el servicio y atender posibles incidencias, y después durante los plazos legalmente exigidos.</p>
+<h2>Tus derechos</h2>
+<p>Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a {mail}. También puedes presentar una reclamación ante la Agencia Española de Protección de Datos (www.aepd.es).</p>""",
+        "politica-cookies": f"""
+<h2>Qué son las cookies</h2>
+<p>Las cookies son pequeños archivos que las webs guardan en tu navegador para funcionar o recordar información sobre tu visita.</p>
+<h2>Cookies que utiliza esta web</h2>
+<p>Esta web no utiliza cookies propias que requieran tu consentimiento.{analytics}</p>
+<p>El mapa de la zona de servicio se muestra desde OpenStreetMap, que puede tratar datos técnicos de la conexión según su propia política de privacidad.</p>
+<h2>Cómo desactivarlas</h2>
+<p>Puedes bloquear o eliminar las cookies desde la configuración de tu navegador.</p>""",
+        "condiciones-servicio": f"""
+<h2>1. Objeto: gestión e intermediación</h2>
+{ps(FUNCIONAMIENTO[0][1])}
+<h2>2. Red de profesionales colaboradores</h2>
+{ps(RED[1])}
+<h2>3. Profesionales independientes</h2>
+{ps(FUNCIONAMIENTO[1][1])}
+<h2>4. Contratación, precio y pago</h2>
+{ps(FUNCIONAMIENTO[2][1])}
+<h2>5. Incidencias y reclamaciones</h2>
+{ps(FUNCIONAMIENTO[3][1])}
+<h2>6. Aceptación</h2>
+<p>{NOTA_COLABORADORES}</p>
+<p>Los datos del titular figuran en el <a href="/aviso-legal/">aviso legal</a>.</p>""",
+    }
+
+
+def legal_page(slug, title, content):
+    body = f"""
+<section class="hero">
+ <div class="wrap">
+  <nav class="breadcrumb" aria-label="Migas de pan"><a href="/">Inicio</a> › {title}</nav>
+  <h1>{title}</h1>
+ </div>
+</section>
+<section>
+ <div class="wrap prose">{content}</div>
+</section>
+"""
+    return head(f"{title} | {NAME}", f"{title} de {NAME}.", f"/{slug}/", robots="noindex, follow") + body + foot()
+
+
 def relativize(rel, txt):
     """Rutas relativas: la web funciona en GitHub Pages (/gruaweb/) y en un dominio propio sin cambios."""
     if rel == "404.html":
@@ -695,6 +815,9 @@ def main():
         write(f"{z['slug']}/index.html", zone(z))
     for slug in SERVICE_PAGES:
         write(f"{slug}/index.html", service_page(slug))
+    pages = legal_pages()
+    for slug, title in LEGAL:
+        write(f"{slug}/index.html", legal_page(slug, title, pages[slug]))
     write("404.html", page_404())
 
     urls = [("/", "1.0", "weekly")] + [(f"/{s}/", "0.9", "monthly") for s in SERVICE_PAGES] + [(f"/{z['slug']}/", "0.8", "monthly") for z in ZONES]
@@ -710,7 +833,8 @@ def main():
         "icons": [{"src": "img/icon-192.png", "sizes": "192x192", "type": "image/png"},
                   {"src": "img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}]},
         ensure_ascii=False, indent=2))
-    write("llms.txt", f"# {NAME}\n\n> Servicio de grúa y asistencia en carretera 24 horas en Barcelona y área metropolitana.\n\n"
+    write("llms.txt", f"# {NAME}\n\n> Gestión de servicios de grúa y asistencia en carretera 24 horas en Barcelona y área metropolitana. "
+          "Los servicios pueden ser realizados y cobrados directamente por profesionales autónomos o empresas colaboradoras independientes.\n\n"
           f"- Teléfono y WhatsApp: {PHONE_FULL}\n- Horario: 24 horas, 365 días\n- Zonas: Barcelona, " + ", ".join(z["name"] for z in ZONES) +
           "\n- Servicios: " + ", ".join(s[1] for s in SERVICES) + f"\n- Web: {SITE}/\n")
 
