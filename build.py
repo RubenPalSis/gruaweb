@@ -352,7 +352,7 @@ BUSINESS = {
 
 def head(title, desc, path, extra_ld=(), robots="index, follow, max-image-preview:large", preload=False):
     url = f"{SITE}{path}"
-    pre = '<link rel="preload" as="image" href="/img/logo-oscuro.webp" type="image/webp" fetchpriority="high">' if preload else ""
+    pre = '<link rel="preload" as="image" href="/img/logo-negro.webp" type="image/webp" fetchpriority="high">' if preload else ""
     ga = ""
     if GA4_ID:
         ga = (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>'
@@ -524,7 +524,7 @@ def index():
    {ctas()}
   </div>
   <div class="hero-logo">
-   <picture><source srcset="/img/logo-oscuro.webp" type="image/webp"><img src="/img/logo-oscuro.png" alt="PL Grúas - servicio de grúa 24H" width="520" height="464" fetchpriority="high"></picture>
+   <picture><source srcset="/img/logo-negro.webp" type="image/webp"><img src="/img/logo-negro.png" alt="PL Grúas - servicio de grúa 24H" width="520" height="468" fetchpriority="high"></picture>
   </div>
  </div>
 </section>

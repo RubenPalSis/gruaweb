@@ -234,3 +234,4 @@ footer .btn-y,footer .btn-y:hover{color:var(--k)}
 .prose h2{font-size:1.35rem}.prose ul{padding-left:1.2em}
 mark{background:var(--y);color:var(--k);padding:0 4px;border-radius:4px}
 .truck picture{max-width:460px;margin:0 auto}
+.hero-logo{background:#000}
