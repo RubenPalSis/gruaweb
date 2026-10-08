@@ -502,7 +502,7 @@ STEPS = f"""<ol class="steps">
 
 # ---------------- PÁGINAS ----------------
 def index():
-    title = f"Grúa 24 Horas Barcelona | Asistencia en Carretera ☎ {PHONE_TXT}"
+    title = f"{NAME} | Grúa 24 Horas Barcelona ☎ {PHONE_TXT}"
     desc = f"Grúa 24h en Barcelona y área metropolitana: remolque de coches y motos, accidentes, batería y pinchazos. Precio al momento. Llama o WhatsApp {PHONE_TXT}."
     website = {"@context": "https://schema.org", "@type": "WebSite", "@id": f"{SITE}/#web", "url": f"{SITE}/", "name": NAME,
                "inLanguage": "es-ES", "publisher": {"@id": f"{SITE}/#negocio"}}
@@ -613,7 +613,7 @@ def zone_faq(z):
 def zone(z):
     n = z["name"]
     path = f"/{z['slug']}/"
-    title = f"Grúa 24h {n} ☎ {PHONE_TXT}"
+    title = f"{NAME} | Grúa 24h {n} ☎ {PHONE_TXT}"
     desc = f"Grúa 24h en {n}: remolque de coches y motos, accidentes, batería y pinchazos. Precio al momento. Llama o WhatsApp {PHONE_TXT}."
     faq = zone_faq(z)
     svc = {"@context": "https://schema.org", "@type": "Service", "serviceType": "Servicio de grúa y asistencia en carretera",
@@ -700,7 +700,7 @@ def service_page(slug):
  </div>
 </section>
 """
-    return head(f"{sp['title']} ☎ {PHONE_TXT}", sp["desc"], path, [crumbs_ld(name, path), svc, faq_ld(sp["faq"])]) + body + foot(wa(motivo=name.lower()))
+    return head(f"{NAME} | {sp['title']} ☎ {PHONE_TXT}", sp["desc"], path, [crumbs_ld(name, path), svc, faq_ld(sp["faq"])]) + body + foot(wa(motivo=name.lower()))
 
 
 def page_404():
