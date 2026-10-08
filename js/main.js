@@ -5,3 +5,9 @@ document.querySelectorAll('a[data-track]').forEach(function(a){
   });
 });
 var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
+// Selector de idioma: se cierra al pulsar fuera o con Escape
+var lang=document.querySelector('details.lang');
+if(lang){
+  document.addEventListener('click',function(e){if(lang.open&&!lang.contains(e.target))lang.open=false;});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lang.open=false;});
+}
