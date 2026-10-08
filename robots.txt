@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /404.html
 
-Sitemap: https://www.asistencia24hbarcelona.es/sitemap.xml
+Sitemap: https://gruaspl.es/sitemap.xml

@@ -11,7 +11,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 # ---------------- CONFIGURACIÓN ----------------
-SITE = "https://www.asistencia24hbarcelona.es"  # <- cambia por tu dominio real (sin / final)
+SITE = "https://gruaspl.es"  # <- cambia por tu dominio real (sin / final)
 NAME = "Asistencia 24H Barcelona"
 PHONE_INTL = "+34671448639"
 PHONE_TXT = "671 44 86 39"
@@ -20,10 +20,10 @@ WA_MSG = "Hola, necesito una grúa"
 GA4_ID = ""  # p.ej. "G-XXXXXXX" para Google Analytics (opcional)
 GSC_VERIFY = ""  # código de verificación de Google Search Console (opcional)
 # Datos del titular para Aviso legal y Política de privacidad (obligatorios por la LSSI y el RGPD)
-TITULAR = ""  # nombre y apellidos o razón social
-NIF = ""
-DOMICILIO = ""  # dirección completa
-EMAIL = ""
+TITULAR = "Pedro Luis Ramos Aguilar"  # nombre y apellidos o razón social
+NIF = "47779753J"
+DOMICILIO = "Ctra. d'Esplugues, 208, 1.º 2.ª, 08940 Cornellà de Llobregat (Barcelona)"  # dirección completa
+EMAIL = "gruaspl@gmail.com"
 # -----------------------------------------------
 
 ROOT = Path(__file__).parent
