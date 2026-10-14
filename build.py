@@ -699,7 +699,6 @@ UI = {
     "telwa": L("Teléfono y WhatsApp", "Telèfon i WhatsApp", "Phone and WhatsApp"),
     "amb": L("y área metropolitana", "i àrea metropolitana", "and metro area"),
     "legal_nav": L("Información legal", "Informació legal", "Legal information"),
-    "made": L("Página web creada por", "Pàgina web creada per", "Website by"),
     "wa_aria": L("Pedir grúa por WhatsApp", "Demanar grua per WhatsApp", "Request a tow truck via WhatsApp"),
     "wa_q": L("¿Necesitas una grúa?", "Necessites una grua?", "Need a tow truck?"),
     "wa_w": L("Escríbenos", "Escriu-nos", "Message us"),
@@ -862,7 +861,7 @@ def foot(wa_url=None):
  <div class="wrap">
   <div class="fgrid">
    <div class="fbrand">
-    <picture><source srcset="/img/logo-oscuro.webp" type="image/webp"><img src="/img/logo-oscuro.png" alt="{NAME}" width="240" height="214" loading="lazy"></picture>
+    <picture><source srcset="/img/logo-oscuro.webp" type="image/webp"><img src="/img/logo-oscuro.png" alt="{NAME}" width="240" height="240" loading="lazy"></picture>
     <p>{t(UI["f_about"])}</p>
    </div>
    <nav aria-label="Servicios"><h3>{t(UI["m_serv"])}</h3><ul>{"".join(f'<li><a href="{lp(f"/{s[3]}/")}">{t(s[1])}</a></li>' for s in SERVICES if s[3])}</ul></nav>
@@ -876,8 +875,7 @@ def foot(wa_url=None):
    </div>
   </div>
   <div class="legal"><span>© <span id="year">{date.today().year}</span> {NAME}</span>
-   <nav class="flegal" aria-label="{t(UI["legal_nav"])}">{" | ".join(f'<a href="{lp(f"/{s}/")}">{t(ti)}</a>' for s, ti in LEGAL)}</nav>
-   <span>{t(UI["made"])} <a href="https://zetaweb.es/" target="_blank" rel="noopener">ZetaWeb</a></span></div>
+   <nav class="flegal" aria-label="{t(UI["legal_nav"])}">{" | ".join(f'<a href="{lp(f"/{s}/")}">{t(ti)}</a>' for s, ti in LEGAL)}</nav></div>
  </div>
 </footer>
 <a class="wa-float" href="{wa_url}" target="_blank" rel="noopener" aria-label="{t(UI["wa_aria"])}" data-track="click_whatsapp"><span class="wa-ic">{ICON["wa"]}</span><span class="wa-txt"><small>{t(UI["wa_q"])}</small>{t(UI["wa_w"])}</span></a>
@@ -961,7 +959,7 @@ def index():
    {ctas()}
   </div>
   <div class="hero-logo">
-   <picture><source srcset="/img/logo-negro.webp" type="image/webp"><img src="/img/logo-negro.png" alt="{t(L("PL Grúas - servicio de grúa 24H", "PL Grúas - servei de grua 24H", "PL Grúas - 24H tow truck service"))}" width="520" height="468" fetchpriority="high"></picture>
+   <picture><source srcset="/img/logo-negro.webp" type="image/webp"><img src="/img/logo-negro.png" alt="{t(L("PL Grúas - servicio de grúa 24H", "PL Grúas - servei de grua 24H", "PL Grúas - 24H tow truck service"))}" width="520" height="520" fetchpriority="high"></picture>
   </div>
  </div>
 </section>
@@ -999,7 +997,7 @@ def index():
 
 <section class="truck light" id="colaboradores">
  <div class="wrap split">
-  <picture><source srcset="/img/logo-claro.webp" type="image/webp"><img src="/img/logo-claro.png" alt="{t(UI["logo_alt"], n=NAME)}" width="600" height="535" loading="lazy"></picture>
+  <picture><source srcset="/img/logo-claro.webp" type="image/webp"><img src="/img/logo-claro.png" alt="{t(UI["logo_alt"], n=NAME)}" width="600" height="600" loading="lazy"></picture>
   <div>
    <h2>{t(RED[0])}</h2>
    {"".join(f'<p class="muted">{t(x)}</p>' for x in RED[1])}
