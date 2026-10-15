@@ -18,6 +18,7 @@ PHONE_INTL = "+34671448639"
 PHONE_TXT = "671 44 86 39"
 PHONE_FULL = "+34 671 44 86 39"
 GA4_ID = "AW-18499485989"  # etiqueta de Google (gtag.js): Google Ads, o "G-XXXXXXX" para Google Analytics (opcional)
+ADS_CONVERSION = "AW-18499485989/tUvQCILt0pwdEKWCn_VE"  # conversión "Contacto" de Google Ads: clics en llamar y WhatsApp
 GSC_VERIFY = ""  # código de verificación de Google Search Console (opcional)
 # Datos del titular para Aviso legal y Política de privacidad (obligatorios por la LSSI y el RGPD)
 TITULAR = "Pedro Luis Ramos Aguilar"  # nombre y apellidos o razón social
@@ -778,6 +779,8 @@ def head(title, desc, path, extra_ld=(), robots="index, follow, max-image-previe
               f"gtag('consent','default',{{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'}});"
               f"try{{if(localStorage.getItem('ck')==='1')gtag('consent','update',{{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'}})}}catch(e){{}}"
               f"gtag('js',new Date());gtag('config','{GA4_ID}');</script>")
+        if ADS_CONVERSION:
+            ga += f"<script>window.ADS_CONVERSION='{ADS_CONVERSION}';</script>"
     gsc = f'<meta name="google-site-verification" content="{GSC_VERIFY}">' if GSC_VERIFY else ""
     hreflang = ""
     if alternates:
@@ -888,7 +891,7 @@ def foot(wa_url=None):
    <div><h3>{t(UI["m_cont"])}</h3>
     <ul class="fcontact">
      <li>{SICON["reloj"]}<span><b>{t(UI["h24"])}</b>{t(UI["d365"])}</span></li>
-     <li>{ICON["tel"]}<span><b><a href="tel:{PHONE_INTL}">{PHONE_FULL}</a></b>{t(UI["telwa"])}</span></li>
+     <li>{ICON["tel"]}<span><b><a href="tel:{PHONE_INTL}" data-track="click_llamar">{PHONE_FULL}</a></b>{t(UI["telwa"])}</span></li>
      <li>{SICON["pin"]}<span><b>Barcelona</b>{t(UI["amb"])}</span></li>
     </ul>
    </div>
@@ -1175,7 +1178,7 @@ def page_404():
     body = f"""<section class="hero"><div class="wrap center"><h1>Página no encontrada</h1>
 <p class="lead" style="margin-inline:auto">La página que buscas no existe, pero si necesitas una grúa estamos disponibles 24 horas.</p>
 <div class="ctas" style="justify-content:center"><a class="btn btn-o" href="/">Volver al inicio</a>
-<a class="btn btn-y" href="tel:{PHONE_INTL}">{ICON["tel"]} {PHONE_TXT}</a></div></div></section>"""
+<a class="btn btn-y" href="tel:{PHONE_INTL}" data-track="click_llamar">{ICON["tel"]} {PHONE_TXT}</a></div></div></section>"""
     return head(f"Página no encontrada | {NAME}", "Página no encontrada.", "/404.html", robots="noindex, follow", alternates=False) + body + foot()
 
 
