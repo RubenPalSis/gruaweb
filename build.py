@@ -706,6 +706,13 @@ UI = {
     "logo_alt": L("Logo de {n}", "Logotip de {n}", "{n} logo"),
     "og_alt": L("Logo de {n}, grúa 24 horas", "Logotip de {n}, grua 24 hores", "{n} logo, 24-hour tow truck"),
     "tow_in": L("Grúa {en}", "Grua {en}", "Tow truck {en}"),
+    "ck_txt": L("Usamos cookies de Google para medir el rendimiento de nuestros anuncios. Solo se instalan si las aceptas.",
+                "Fem servir cookies de Google per mesurar el rendiment dels nostres anuncis. Només s'instal·len si les acceptes.",
+                "We use Google cookies to measure the performance of our ads. They are only set if you accept them."),
+    "ck_more": L("Más información", "Més informació", "More information"),
+    "ck_ok": L("Aceptar", "Acceptar", "Accept"),
+    "ck_no": L("Rechazar", "Rebutjar", "Reject"),
+    "ck_cfg": L("Configurar cookies", "Configurar cookies", "Cookie settings"),
 }
 
 # ---------------- PLANTILLAS ----------------
@@ -767,7 +774,10 @@ def head(title, desc, path, extra_ld=(), robots="index, follow, max-image-previe
     ga = ""
     if GA4_ID:
         ga = (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>'
-              f"<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag('js',new Date());gtag('config','{GA4_ID}');</script>")
+              f"<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}"
+              f"gtag('consent','default',{{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'}});"
+              f"try{{if(localStorage.getItem('ck')==='1')gtag('consent','update',{{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'}})}}catch(e){{}}"
+              f"gtag('js',new Date());gtag('config','{GA4_ID}');</script>")
     gsc = f'<meta name="google-site-verification" content="{GSC_VERIFY}">' if GSC_VERIFY else ""
     hreflang = ""
     if alternates:
@@ -842,6 +852,15 @@ def short(n):
     return n.replace("de Llobregat", "").replace("del Vallès", "").strip()
 
 
+def ck_banner():
+    if not GA4_ID:
+        return ""
+    return (f'<div class="ck" id="ck" role="dialog" aria-label="Cookies" hidden><p>{t(UI["ck_txt"])} '
+            f'<a href="{lp("/politica-cookies/")}">{t(UI["ck_more"])}</a></p>'
+            f'<div class="ck-b"><button type="button" class="btn btn-o" data-ck="0">{t(UI["ck_no"])}</button>'
+            f'<button type="button" class="btn btn-y" data-ck="1">{t(UI["ck_ok"])}</button></div></div>\n')
+
+
 def foot(wa_url=None):
     wa_url = wa_url or wa()
     return f"""</main>
@@ -875,11 +894,11 @@ def foot(wa_url=None):
    </div>
   </div>
   <div class="legal"><span>© <span id="year">{date.today().year}</span> {NAME}</span>
-   <nav class="flegal" aria-label="{t(UI["legal_nav"])}">{" | ".join(f'<a href="{lp(f"/{s}/")}">{t(ti)}</a>' for s, ti in LEGAL)}</nav></div>
+   <nav class="flegal" aria-label="{t(UI["legal_nav"])}">{" | ".join([f'<a href="{lp(f"/{s}/")}">{t(ti)}</a>' for s, ti in LEGAL] + ([f'<button type="button" class="ck-open">{t(UI["ck_cfg"])}</button>'] if GA4_ID else []))}</nav></div>
  </div>
 </footer>
 <a class="wa-float" href="{wa_url}" target="_blank" rel="noopener" aria-label="{t(UI["wa_aria"])}" data-track="click_whatsapp"><span class="wa-ic">{ICON["wa"]}</span><span class="wa-txt"><small>{t(UI["wa_q"])}</small>{t(UI["wa_w"])}</span></a>
-<script src="/js/main.js" defer></script>
+{ck_banner()}<script src="/js/main.js" defer></script>
 </body>
 </html>
 """
@@ -1169,9 +1188,9 @@ def legal_pages():
     ps = lambda lst: "".join(f"<p>{t(x)}</p>" for x in lst)
     cond = lp("/condiciones-servicio/")
     aviso = lp("/aviso-legal/")
-    analytics = t(L(" Además, utilizamos la etiqueta de Google (Google Ads) para medir el rendimiento de nuestros anuncios, que puede instalar cookies de Google.",
-                    " A més, utilitzem l'etiqueta de Google (Google Ads) per mesurar el rendiment dels nostres anuncis, que pot instal·lar cookies de Google.",
-                    " We also use the Google tag (Google Ads) to measure the performance of our ads, which may set Google cookies.")
+    analytics = t(L(" Además, utilizamos la etiqueta de Google (Google Ads) para medir el rendimiento de nuestros anuncios. Sus cookies solo se instalan si las aceptas en el aviso de cookies; mientras no las aceptes, Google solo recibe avisos sin cookies. Puedes cambiar tu elección cuando quieras desde «Configurar cookies», al pie de cada página.",
+                    " A més, utilitzem l'etiqueta de Google (Google Ads) per mesurar el rendiment dels nostres anuncis. Les seves cookies només s'instal·len si les acceptes a l'avís de cookies; mentre no les acceptis, Google només rep avisos sense cookies. Pots canviar la teva elecció quan vulguis des de «Configurar cookies», al peu de cada pàgina.",
+                    " We also use the Google tag (Google Ads) to measure the performance of our ads. Its cookies are only set if you accept them in the cookie notice; until you do, Google only receives cookieless pings. You can change your choice at any time via \u201cCookie settings\u201d at the bottom of every page.")
                   if GA4_ID else L(" No utilizamos cookies analíticas ni publicitarias.", " No utilitzem cookies analítiques ni publicitàries.",
                                    " We do not use analytics or advertising cookies."))
     pages = {
