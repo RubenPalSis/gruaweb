@@ -17,7 +17,7 @@ NAME = "PL Grúas"
 PHONE_INTL = "+34671448639"
 PHONE_TXT = "671 44 86 39"
 PHONE_FULL = "+34 671 44 86 39"
-GA4_ID = ""  # p.ej. "G-XXXXXXX" para Google Analytics (opcional)
+GA4_ID = "AW-18499485989"  # etiqueta de Google (gtag.js): Google Ads, o "G-XXXXXXX" para Google Analytics (opcional)
 GSC_VERIFY = ""  # código de verificación de Google Search Console (opcional)
 # Datos del titular para Aviso legal y Política de privacidad (obligatorios por la LSSI y el RGPD)
 TITULAR = "Pedro Luis Ramos Aguilar"  # nombre y apellidos o razón social
@@ -1169,9 +1169,9 @@ def legal_pages():
     ps = lambda lst: "".join(f"<p>{t(x)}</p>" for x in lst)
     cond = lp("/condiciones-servicio/")
     aviso = lp("/aviso-legal/")
-    analytics = t(L(" Además, utilizamos Google Analytics para obtener estadísticas anónimas de visitas; estas cookies solo se instalan si las aceptas.",
-                    " A més, utilitzem Google Analytics per obtenir estadístiques anònimes de visites; aquestes cookies només s'instal·len si les acceptes.",
-                    " We also use Google Analytics to obtain anonymous visitor statistics; these cookies are only set if you accept them.")
+    analytics = t(L(" Además, utilizamos la etiqueta de Google (Google Ads) para medir el rendimiento de nuestros anuncios, que puede instalar cookies de Google.",
+                    " A més, utilitzem l'etiqueta de Google (Google Ads) per mesurar el rendiment dels nostres anuncis, que pot instal·lar cookies de Google.",
+                    " We also use the Google tag (Google Ads) to measure the performance of our ads, which may set Google cookies.")
                   if GA4_ID else L(" No utilizamos cookies analíticas ni publicitarias.", " No utilitzem cookies analítiques ni publicitàries.",
                                    " We do not use analytics or advertising cookies."))
     pages = {
